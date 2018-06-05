@@ -4,7 +4,8 @@ function countrySeparateArray() {
     const singleCountryArray = CountryApi.getAllCountries();
     for (let countryCount = 0; countryCount<singleCountryArray.length; countryCount++) {
         const countryCountArray = [];
-        countryCountArray.push(singleCountryArray[countryCount], 0, 'Cuisine');
+        const randomValue = Math.floor((Math.random() * 20));
+        countryCountArray.push(singleCountryArray[countryCount], randomValue, 'Cuisine');
         globalArray.push(countryCountArray);
     }
 }
@@ -24,9 +25,11 @@ google.charts.load('current', {
 
     let options = {
         minValue: 0,
-        maxValue: 1,
-        colorAxis: {values:[0,1], colors:['lightgrey', 'orange']},
-        legend: 'none'
+        maxValue: 20,
+        colorAxis: {values:[0,20], colors:['#FD297B', 'orange']},
+        legend: 'none',
+        datalessRegionColor: 'orange',
+        height: $(window).height()*0.75
     };
 
     let chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
@@ -56,4 +59,5 @@ google.charts.load('current', {
     google.visualization.events.addListener(chart, 'select', clickingCountry);
     
     chart.draw(data, options);
-  }
+}
+

@@ -82,3 +82,12 @@ header {
 #map-container #regions_div {
   height: 100%;
 }
+
+path {
+  stroke: none;
+}
+
+path:hover {
+  stroke-width:3;
+  stroke: #ffffff;
+}
