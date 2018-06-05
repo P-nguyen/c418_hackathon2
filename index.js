@@ -1,15 +1,15 @@
 $(document).ready(initializeApp);
 
 function initializeApp() {
-    autoComplete( $("input"), _countries);
+    let countryArray = CountryApi.getAllCountries();
+    autoComplete( $("input"), countryArray);
 }
 
-function capitalizeStr( inputStr ){
-    return inputStr[0].toUpperCase() + inputStr.substring(1, inputStr.length);
-}
+
 
 function autoComplete( input$Ele, countryArray){
-    let lastFoundCountries;
+    let lastFoundCountries = [];
+    $(".search-icon").on('click', sendCountryCode);
 
     input$Ele.on('input', function(){
         let val = this.value; //this is the input dom element
@@ -20,7 +20,7 @@ function autoComplete( input$Ele, countryArray){
             return;} // this is when someone deletes previous inputs its a ''
 
         let filteredCountryArr = countryArray
-                            .filter( country => country.substr(0, val.length).toUpperCase() === val.toUpperCase() ? true : false );
+                            .filter( country => country.name.substr(0, val.length).toUpperCase() === val.toUpperCase() ? true : false );
 
         //this is a check to see if array has anything, if nothing exist then stop the function.
         if (filteredCountryArr.length === 0){
@@ -40,14 +40,37 @@ function autoComplete( input$Ele, countryArray){
                 return $(".autoCompleteBackground").text( "" );
             }
 
-            this.value = lastFoundCountries[0];
-            $(".autoCompleteBackground").text( autoCompleteString( lastFoundCountries ));
-            lastFoundCountries.splice(0,1);
+            if(lastFoundCountries[0].name === this.value){
+                lastFoundCountries.splice(0,1);
+            }
+
+            if(lastFoundCountries.length <1){
+                this.value = '';
+                $(".autoCompleteBackground").text( "" );
+            }else{
+                this.value = lastFoundCountries[0].name;
+                $(".autoCompleteBackground").text( autoCompleteString( lastFoundCountries ));
+            }
             return;
         }
     });
 
-    function autoCompleteString( inputCountryArray ) {
-        return inputCountryArray.reduce( (fullString, country) => `${fullString} | ${country}`);
+    function capitalizeStr( inputStr ){
+        return inputStr[0].toUpperCase() + inputStr.substring(1, inputStr.length);
+    }
+
+    function autoCompleteString( inputCountryObj ) {
+        const result = inputCountryObj.map( obj => obj.name);
+        return result.reduce( (fullString, country) => `${fullString} | ${country}`);
+    }
+
+    function sendCountryCode(){
+        try{
+            let countryCode = lastFoundCountries[0].code;
+            window.location.href = ( `resultPage.html?countrycode=${countryCode}` );
+        }catch(err){
+            console.log('no country selected');
+        }
+        return;
     }
 }
