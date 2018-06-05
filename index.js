@@ -1,7 +1,7 @@
 $(document).ready(initializeApp);
 
 function initializeApp() {
-    autoComplete( $("#inputNav"), _countries);
+    autoComplete( $("input"), _countries);
 }
 
 function capitalizeStr( inputStr ){
@@ -15,7 +15,7 @@ function autoComplete( input$Ele, countryArray){
         let val = this.value; //this is the input dom element
         //close any open list.
         if (!val) {
-            $(".ghostInputNav").text( "" );
+            $(".autoCompleteBackground").text( "" );
             return false;} // this is when someone deletes previous inputs its a ''
 
         const filteredCountryArr = countryArray
@@ -27,6 +27,6 @@ function autoComplete( input$Ele, countryArray){
                                 .splice(0,5)
                                 .reduce( (fullString, country) => `${fullString} | ${country}`);
 
-        $(".ghostInputNav").text( autoCompString );
+        $(".autoCompleteBackground").text( autoCompString );
     });
 }
