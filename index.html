@@ -15,21 +15,40 @@
     <script src="youtubeApi.js"></script>
     <script src="googleMapsApi.js"></script>
     <script src="index.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
     <title></title>
 </head>
 
 <body>
-    <form autocomplete="off" action="/foodExample/someSpecificFoodName">
+
+<!--     <form autocomplete="off" action="/foodExample/someSpecificFoodName">
         <div class="inputNav">
             <div class="ghostInputNav"></div>
             <input id="inputNav" type="text" placeholder="Pick a Country!" >
         </div>
         <input type="submit">
-    </form>
+    </form> -->
+
+
+    <header>
+        <h1>
+            <span>f</span> ood
+            <span>n</span> ation
+        </h1>
+        <div class="search-container">
+            <div class="search-icon">
+                <img src="images/search_icon.png" alt="">
+            </div>
+            <input type="text" name="search" placeholder="which country?">
+        </div>
+    </header>
 
     <div id="map-container">
-            <div id="regions_div" style="width: 50%; height: 20%;"></div>
+        <div id="regions_div"></div>
     </div>
 </body>
 
 </html>
+
+<!-- <div>Icons made by <a href="https://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor Cresnar</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
