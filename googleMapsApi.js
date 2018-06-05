@@ -1,13 +1,12 @@
 var globalArray = [];
 
 function countrySeparateArray() {
-    let singleCountryArray = CountryApi.getAllCountries();
+    const singleCountryArray = CountryApi.getAllCountries();
     for (let countryCount = 0; countryCount<singleCountryArray.length; countryCount++) {
-        let countryCountArray = [];
-        countryCountArray.push(singleCountryArray[countryCount]);
+        const countryCountArray = [];
+        countryCountArray.push(singleCountryArray[countryCount], 0, 'Cuisine');
         globalArray.push(countryCountArray);
     }
-    globalArray.unshift(['Country']);
 }
 
 google.charts.load('current', {
@@ -17,13 +16,22 @@ google.charts.load('current', {
   countrySeparateArray();
   google.charts.setOnLoadCallback(drawRegionsMap);
   function drawRegionsMap() {
-    let data = google.visualization.arrayToDataTable(globalArray);
+    let data = new google.visualization.DataTable();
+    data.addColumn('string', 'Country');
+    data.addColumn('number', 'Value'); 
+    data.addColumn({type:'string', role:'tooltip'});
+    data.addRows(globalArray);
 
-    let options = {};
+    let options = {
+        minValue: 0,
+        maxValue: 1,
+        colorAxis: {values:[0,1], colors:['lightgrey', 'orange']},
+        legend: 'none'
+    };
 
     let chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
-    function myClickHandler(){
+    function clickingCountry(){
         const selection = chart.getSelection();
         let message = '';
         for (let i = 0; i < selection.length; i++) {
@@ -42,10 +50,10 @@ google.charts.load('current', {
         if (message == '') {
           message = 'nothing';
         }
-        console.log('You selected ' + message);
-      
+        console.log(message);
+    
     }
-    google.visualization.events.addListener(chart, 'select', myClickHandler);
-
+    google.visualization.events.addListener(chart, 'select', clickingCountry);
+    
     chart.draw(data, options);
   }
