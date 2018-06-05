@@ -106,11 +106,10 @@ header {
 }
 
 path {
-  stroke-width: 3;
-  stroke: #ffffff;
+    stroke-width: 0;
 }
 
 path:hover {
-  stroke-width: 3;
-  stroke:  rgb(105, 233, 255);
+    stroke-width: 3;
+    stroke: #ffffff;
 }
