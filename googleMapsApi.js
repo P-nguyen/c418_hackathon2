@@ -1,13 +1,13 @@
 var globalArray = [];
 
 function countrySeparateArray() {
-    let singleCountryArray = CountryApi.getAllCountries();
+    const singleCountryArray = CountryApi.getAllCountries();
     for (let countryCount = 0; countryCount<singleCountryArray.length; countryCount++) {
-        let countryCountArray = [];
-        countryCountArray.push(singleCountryArray[countryCount]);
+        const countryCountArray = [];
+        const randomValue = Math.floor((Math.random() * 20));
+        countryCountArray.push(singleCountryArray[countryCount], randomValue, 'Cuisine');
         globalArray.push(countryCountArray);
     }
-    globalArray.unshift(['Country']);
 }
 
 google.charts.load('current', {
@@ -17,13 +17,25 @@ google.charts.load('current', {
   countrySeparateArray();
   google.charts.setOnLoadCallback(drawRegionsMap);
   function drawRegionsMap() {
-    let data = google.visualization.arrayToDataTable(globalArray);
+    let data = new google.visualization.DataTable();
+    data.addColumn('string', 'Country');
+    data.addColumn('number', 'Value'); 
+    data.addColumn({type:'string', role:'tooltip'});
+    data.addRows(globalArray);
 
-    let options = {};
+    let options = {
+        minValue: 0,
+        maxValue: 20,
+        colorAxis: {values:[0,20], colors:['#FD297B', 'orange']},
+        legend: 'none',
+        datalessRegionColor: 'orange',
+        chartArea: {'width': '100%', 'height': '100%'},
+        height: $(window).height()*0.65
+    };
 
     let chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
-    function myClickHandler(){
+    function clickingCountry(){
         const selection = chart.getSelection();
         let message = '';
         for (let i = 0; i < selection.length; i++) {
@@ -42,10 +54,11 @@ google.charts.load('current', {
         if (message == '') {
           message = 'nothing';
         }
-        console.log('You selected ' + message);
-      
+        console.log(message);
+    
     }
-    google.visualization.events.addListener(chart, 'select', myClickHandler);
-
+    google.visualization.events.addListener(chart, 'select', clickingCountry);
+    
     chart.draw(data, options);
-  }
+}
+

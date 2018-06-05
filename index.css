@@ -34,7 +34,7 @@ h1 span {
 
 header {
   width: 100vw;
-  height: 30vh;
+  height: 23vh;
 
   display: flex;
   flex-direction: column;
@@ -72,8 +72,6 @@ header {
 
 #map-container {
   width: 100vw;
-  height: 70vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,4 +79,13 @@ header {
 
 #map-container #regions_div {
   height: 100%;
+}
+
+path {
+  stroke: none;
+}
+
+path:hover {
+  stroke-width:3;
+  stroke: #ffffff;
 }
