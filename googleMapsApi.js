@@ -31,7 +31,8 @@ google.charts.load('current', {
         legend: 'none',
         datalessRegionColor: 'orange',
         chartArea: {'width': '100%', 'height': '100%'},
-        height: $(window).height()*0.65
+        height: $(window).height()*0.65,
+        tooltip: {textStyle: {fontName: 'Montserrat, sans-serif'}}
     };
 
     let chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
@@ -55,7 +56,7 @@ google.charts.load('current', {
         if (message == '') {
           message = 'nothing';
         }
-        console.log(message);
+        window.location.href = ("resultPage.html?countrycode="+message);
     
     }
     google.visualization.events.addListener(chart, 'select', clickingCountry);
