@@ -29,7 +29,8 @@ google.charts.load('current', {
         colorAxis: {values:[0,20], colors:['#FD297B', 'orange']},
         legend: 'none',
         datalessRegionColor: 'orange',
-        height: $(window).height()*0.75
+        chartArea: {'width': '100%', 'height': '100%'},
+        height: $(window).height()*0.65
     };
 
     let chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
