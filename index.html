@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="index.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="countryApi.js"></script>
@@ -18,6 +19,14 @@
 </head>
 
 <body>
+    <form autocomplete="off" action="/foodExample/someSpecificFoodName">
+        <div class="inputNav">
+            <div class="ghostInputNav"></div>
+            <input id="inputNav" type="text" placeholder="Pick a Country!" >
+        </div>
+        <input type="submit">
+    </form>
+
     <div id="map-container">
             <div id="regions_div" style="width: 50%; height: 20%;"></div>
     </div>

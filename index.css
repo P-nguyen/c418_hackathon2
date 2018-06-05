@@ -1,0 +1,13 @@
+#inputNav {
+    width: 60vw;
+    background: rgba(255, 255, 255, 0);
+}
+.ghostInputNav{
+    position: absolute;
+    padding: 2px 3px;
+    font: 400 13.3333px Arial;
+    color: grey;
+}
+.inputNav {
+    position: relative;
+}
