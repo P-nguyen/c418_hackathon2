@@ -5,7 +5,7 @@ function countrySeparateArray() {
     for (let countryCount = 0; countryCount<singleCountryArray.length; countryCount++) {
         const countryCountArray = [];
         const randomValue = Math.floor((Math.random() * 20));
-        countryCountArray.push(singleCountryArray[countryCount], randomValue, 'Cuisine');
+        countryCountArray.push(singleCountryArray[countryCount].code, singleCountryArray[countryCount].name, randomValue, 'Cuisine');
         globalArray.push(countryCountArray);
     }
 }
@@ -18,6 +18,7 @@ google.charts.load('current', {
   google.charts.setOnLoadCallback(drawRegionsMap);
   function drawRegionsMap() {
     let data = new google.visualization.DataTable();
+    data.addColumn('string', 'Code');
     data.addColumn('string', 'Country');
     data.addColumn('number', 'Value'); 
     data.addColumn({type:'string', role:'tooltip'});
