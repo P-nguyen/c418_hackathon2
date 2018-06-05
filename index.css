@@ -12,11 +12,11 @@
     position: relative;
 } */
 
-autoCompleteBackground{
+autoCompleteBackground {
   position: absolute;
   padding: 2px 3px;
   font: 400 13.3333px Arial;
-  color: grey;
+  color: rgb(185, 182, 182);
 }
 
 body {
@@ -36,8 +36,8 @@ h1.brand {
 }
 
 h1.brand span {
-    color: #FD297B;
-    margin-right: -.5rem;
+  color: #fd297b;
+  margin-right: -0.5rem;
 }
 
 header {
@@ -56,7 +56,7 @@ header {
   position: relative;
   height: 3rem;
   width: 60%;
-  box-shadow: 1px 2px 5px rgba(128, 128, 128, 0.548);
+  box-shadow: 0 1px 5px rgba(128, 128, 128, 0.3);
   display: flex;
 }
 
@@ -71,12 +71,12 @@ header {
   width: 100%;
 }
 
-.search-container .inputField{
+.search-container .inputField {
   width: 100%;
   font-size: 1.5rem;
   font-weight: lighter;
   padding-left: 1%;
-  background: rgba(255,255,255,0);
+  background: rgba(255, 255, 255, 0);
   font-family: inherit;
 }
 
@@ -86,7 +86,7 @@ header {
   outline: none;
 }
 
-.search-container .autoCompleteBackground{
+.search-container .autoCompleteBackground {
   box-sizing: border-box;
   padding: 9px 1%;
   position: absolute;
@@ -106,10 +106,11 @@ header {
 }
 
 path {
-  stroke: none;
+  stroke-width: 3;
+  stroke: #ffffff;
 }
 
 path:hover {
-  stroke-width:3;
-  stroke: #ffffff;
+  stroke-width: 3;
+  stroke:  rgb(105, 233, 255);
 }
