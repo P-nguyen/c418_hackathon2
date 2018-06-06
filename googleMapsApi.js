@@ -6,9 +6,37 @@ $(document).ready(function() {
       });
       $(window).trigger('resize');
       countrySeparateArray();
+      $('.inputField').on('keyup', mobileMap);
 })
 
 var globalArray = [];
+var options = {
+  minValue: 0,
+  maxValue: 20,
+  colorAxis: { values: [0, 20], colors: ['#FD297B', 'orange'] },
+  legend: 'none',
+  datalessRegionColor: 'orange',
+  chartArea: { 'width': '100%', 'height': '100%' },
+  height: $(window).height() * 0.65,
+  tooltip: { textStyle: { fontName: 'Montserrat, sans-serif' } }
+};
+
+function mobileMap() {
+  if ($(window).width() <= 375) {
+      let fullCountryName = $('input').val();
+      for (let countrySort = 0; countrySort < globalArray.length; countrySort++) {
+        if (fullCountryName === globalArray[countrySort][1]) {
+          globalArray[countrySort][2] = 0;
+          options.region = globalArray[countrySort][0];
+          options.height = $(window).height() * 0.3;
+          drawRegionsMap();
+          $('#regions_div').css('display', 'flex');
+        } else {
+          globalArray[countrySort][2] = 20;
+        }
+      }
+    }
+}
 
 function countrySeparateArray() {
     const singleCountryArray = CountryApi.getAllCountries();
@@ -33,17 +61,6 @@ function drawRegionsMap() {
   data.addColumn('number', 'Value');
   data.addColumn({ type: 'string', role: 'tooltip' });
   data.addRows(globalArray);
-
-  let options = {
-    minValue: 0,
-    maxValue: 20,
-    colorAxis: { values: [0, 20], colors: ['#FD297B', 'orange'] },
-    legend: 'none',
-    datalessRegionColor: 'orange',
-    chartArea: { 'width': '100%', 'height': '100%' },
-    height: $(window).height() * 0.65,
-    tooltip: { textStyle: { fontName: 'Montserrat, sans-serif' } }
-  };
 
   let chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
