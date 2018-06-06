@@ -4,7 +4,7 @@ const YELP_KEY =
   "Cd4enAsuP8-RJG72Vu-KcFGjRFkklvvzsNer3NMokc800e5Apv5KhDncyYi56ptObgLpyU5EMxJoq4HueQ_vOmDd5igDri7DMW-lP4VNHu8TZ3fWLGp3reHoqTcWW3Yx";
 
 class Yelp {
-  static getLocalBusinesses(latitude, longitude, term = "food") {
+  static getLocalBusinesses({ lat: latitude, lng: longitude }, term = "food") {
     const query = "businesses";
     const config = {
       crossDomain: true,
