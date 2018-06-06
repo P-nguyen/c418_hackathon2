@@ -33,7 +33,6 @@ function renderLogoImage(url) {
 }
 
 function addDummyFlag () {
-  debugger
   $('.flag img').attr('src', 'images/UN_flag.png')
 } 
 
