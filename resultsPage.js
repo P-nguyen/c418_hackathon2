@@ -2,35 +2,33 @@ $(document).ready(initializeApp);
 
 function initializeApp() {
   //grab url params here
-  const { search } = window.location;
-  const [, countryCode] = search.split("=");
+  const { search } = window.location; // gets current url
+  const [, countryCode] = search.split("="); // splits url into array and gets the second index.
 
   const countryName = CountryApi.getCountryNameFromCode(countryCode);
   const countryLogoUrl = CountryApi.getCountryLogoUrl(countryCode);
   const food = CountryApi.getFoodFromCountry(countryCode);
-  ajaxGoogleImageSearch(food); //insert name of food as string here
-  getWikipediaDescription(food);
-  YoutubeApi.youtubeServerCall(food);
+  ajaxGoogleImageSearch(food); //searches google search API for food
+  getWikipediaDescription(food); // gets wiki description
+  YoutubeApi.youtubeServerCall(food); //gets related videos from youtube APi
 
-  renderCountryName(countryName);
-  renderLogoImage(countryLogoUrl);
+  renderCountryName(countryName); //display's country name
+  renderLogoImage(countryLogoUrl); //displays country flag
 
   //data.results[0].geometry.location
   Geolocation.cityLocation("irvine").done(({ results: [first] }) => {
     const { location } = first.geometry;
     Yelp.getLocalBusinesses(location, food).done(response => {
-
-        YelpMap.renderMap(location, response);
-        renderYelpResults(response);
+      YelpMap.renderMap(location, response);
+      renderYelpResults(response);
     });
-    
   });
 
   addEventHandlers();
 }
 
 function renderYelpResults({ businesses }) {
-    console.log(businesses[0]);
+  console.log(businesses[0]);
   businesses.forEach(business => {
     const {
       name,
@@ -41,14 +39,13 @@ function renderYelpResults({ businesses }) {
       location,
       url
     } = business;
-
-
   });
 }
 
 function addEventHandlers() {
   $(".brand").on("click", returnToHomepage);
-  $(".modal").on("click", closeYoutubeModal);
+  $(".modal").on("click", closeYoutubeModal); //closes fixed youtube modal
+  document.querySelector(".flag img").addEventListener("error", addDummyFlag);
 }
 
 function renderCountryName(name) {
@@ -57,6 +54,10 @@ function renderCountryName(name) {
 
 function renderLogoImage(url) {
   $(".flag img").attr("src", url);
+}
+
+function addDummyFlag() {
+  $(".flag img").attr("src", "images/UN_flag.png");
 }
 
 function returnToHomepage() {
@@ -97,9 +98,10 @@ function ajaxGoogleImageSearch(inputFoodStr) {
 }
 
 function makeheader(inputString) {
-  let strArray = inputString.split(" ");
+  let strArray = inputString.split(" "); //splits string into array
   let result = "";
   for (let i = 0; i < strArray.length; i++) {
+    // concats html into result for $.html
     result += `<span>${strArray[i][0]}</span>${strArray[i].substr(
       1,
       strArray[i].length
@@ -136,10 +138,8 @@ function getWikipediaDescription(inputStr) {
     $.ajax({
       url: descrSearchStr,
       dataType: "jsonp",
-
       success: function(data) {
         var pageSummary = data.query.pages[pageID].extract;
-        console.log("pageSummary:", pageSummary);
         /*****Save pageSummary onto DOM element here*****/
         $(".wikiDescription").text(pageSummary);
         /*$('DOMelement').text(pageSummary) */
