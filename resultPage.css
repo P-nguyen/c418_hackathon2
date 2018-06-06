@@ -76,3 +76,7 @@ header .country h2.name {
 .hide{
     display: none;
 }
+
+.brand:hover{
+    cursor:pointer;
+}
