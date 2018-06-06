@@ -657,7 +657,7 @@ class CountryApi {
   {
     "code": "NE",
     "name": "Niger",
-    "food": "Djerma Stew"
+    "food": "Jollof rice"
   },
   {
     "code": "NG",
@@ -737,7 +737,7 @@ class CountryApi {
   },
   {
     "code": "RU",
-    "name": "Russian",
+    "name": "Russia",
     "food":"Beef Stroganoff",
   },
   {
@@ -815,6 +815,11 @@ class CountryApi {
     "code": "ZA",
     "name": "South Africa",
     "food": "Bobotie"
+  },
+  {
+    "code": "KR",
+    "name": "South Korea",
+    "food": "Bibimbap"
   },
   {
     "code": "ES",
