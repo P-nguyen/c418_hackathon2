@@ -40,21 +40,32 @@ function ajaxGoogleImageSearch( inputFoodStr ){
         dataType: 'json',
         data:{
           key: "AIzaSyCV18q5ZdhaazVuu7Msq2td6RMUbSKb_o8",
-            q: inputFoodStr,
+            q: `${inputFoodStr}+gourmet+meal`,
             type: 'image/jpeg',
             imgSize: 'huge',
-            cx: "010569814504410284789:dq0xetlzofa"
+            cx: "010569814504410284789:dq0xetlzofa",
+            safe: "high"
         },
         url: "https://www.googleapis.com/customsearch/v1",
         method: "GET",
         success: function(response){
-          console.log(response);
-          console.log(response.items["1"].pagemap.cse_image["0"].src);
+          let headerHtml = makeheader(inputFoodStr);
+          let foodHeaderTag = $("<h1>").html(headerHtml);
+          let foodImgTag = $("<img>").attr("src", response.items["1"].pagemap.cse_image["0"].src );
+          $(".food-section").prepend(foodHeaderTag,foodImgTag);
         }
     }
     $.ajax(ajaxObject);
 }
 
+function makeheader( inputString ){
+  let strArray = inputString.split(' ');
+  let result = '';
+  for (let i = 0; i < strArray.length; i++) {
+      result += `<span>${strArray[i][0]}</span>${strArray[i].substr(1, strArray[i].length)} `;
+  }
+  return result;
+}
 
 
 function getWikipediaDescription(inputStr) {

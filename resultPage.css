@@ -55,6 +55,20 @@ section.food-section {
   height: calc(100vh - 2rem);
 }
 
+section.food-section h1 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: lighter;
+}
+
+section.food-section h1 span {
+  color: #FF5864;
+}
+
+section.food-section img{
+  height: 50vh;
+}
+
 .modal {
   position: fixed;
   width: 100vw;
