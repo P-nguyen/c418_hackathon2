@@ -96,7 +96,7 @@ function getWikipediaDescription(inputStr) {
         var pageSummary = data.query.pages[pageID].extract
         console.log('pageSummary:', pageSummary)
         /*****Save pageSummary onto DOM element here*****/
-
+        $('.wikiDescription').text(pageSummary);
         /*$('DOMelement').text(pageSummary) */
         /***** ^^Do it here^^ ******/
       }
