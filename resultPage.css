@@ -92,6 +92,33 @@ section.food-section h1 span {
   margin-top: 33.2px;
 }
 
+.blinkScrollBar {
+  height: 10vh;
+  width: 100vw;
+  position: absolute;
+  top: 88vh;
+  text-align: center;
+  font-size: 8vh;
+  background-color: #fd297b;
+  animation-name: blink;
+  animation-duration: 2900ms;
+  animation-iteration-count: infinite;
+  transition-timing-function: ease;
+  transition: 1000ms;
+}
+
+@keyframes blink {
+  0% {opacity: .2;}
+  50% {opacity: 0;}
+  100% {opacity: .2}
+}
+
+.hideBlinkScrollBar {
+  height: 0;
+  font-size: 0;
+  top: 100vh;
+}
+
 .modal {
   position: fixed;
   width: 100vw;
