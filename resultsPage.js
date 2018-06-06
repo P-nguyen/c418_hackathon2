@@ -4,19 +4,31 @@ function initializeApp() {
   //grab url params here
   const { search } = window.location;
   const [, countryCode] = search.split("=");
+
   const countryName = CountryApi.getCountryNameFromCode(countryCode);
-  const countryLogoUrl = CountryApi.getCountryLogoUrl(countryCode)
-  console.log(countryLogoUrl);
-  $('h2.name').text(countryName);
-
-  $('.flag img').attr('src', countryLogoUrl);
-  //getFoodFrom Martin;
+  const countryLogoUrl = CountryApi.getCountryLogoUrl(countryCode);
   const food = CountryApi.getFoodFromCountry(countryCode);
+  ajaxGoogleImageSearch(food); //insert name of food as string here
   getWikipediaDescription(food);
+  YoutubeApi.youtubeServerCall(food);
+  
+  renderCountryName(countryName);
+  renderLogoImage(countryLogoUrl);
+  
+  addEventHandlers();
+}
 
-  $('.flag img').attr('src',countryLogoUrl);
+function addEventHandlers() {
   $('.brand').on('click', returnToHomepage );
-  ajaxGoogleImageSearch(); //insert name of food as string here
+  $(".modal").on("click", closeYoutubeModal);
+}
+
+function renderCountryName(name) {
+  $("h2.name").text(name);
+}
+
+function renderLogoImage(url) {
+  $(".flag img").attr("src", url);
 }
 
 function returnToHomepage(){
