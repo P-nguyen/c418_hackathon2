@@ -3,9 +3,12 @@ $(document).ready(initializeApp);
 function initializeApp() {
     let countryArray = CountryApi.getAllCountries();
     autoComplete( $("input"), countryArray);
+    $('.brand').on('click', returnToHomepage );
 }
 
-
+function returnToHomepage(){
+    window.location.href = ( "index.html" );
+}
 
 function autoComplete( input$Ele, countryArray){
     let lastFoundCountries = [];
@@ -34,8 +37,8 @@ function autoComplete( input$Ele, countryArray){
 
     });
 
-    input$Ele.on("keypress", function(event){
-        if(event.keyCode === 13){
+    input$Ele.on("keydown", function(event){
+        if(event.keyCode === 39){
             if(lastFoundCountries<1){
                 return $(".autoCompleteBackground").text( "" );
             }
@@ -52,6 +55,8 @@ function autoComplete( input$Ele, countryArray){
                 $(".autoCompleteBackground").text( autoCompleteString( lastFoundCountries ));
             }
             return;
+        }else if(event.keyCode === 13){
+            sendCountryCode();
         }
     });
 
