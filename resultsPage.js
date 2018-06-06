@@ -11,20 +11,43 @@ function initializeApp() {
   ajaxGoogleImageSearch(food); //insert name of food as string here
   getWikipediaDescription(food);
   YoutubeApi.youtubeServerCall(food);
-  
+
   renderCountryName(countryName);
   renderLogoImage(countryLogoUrl);
-  
 
-  Yelp.getLocalBusinesses(37.786882, -122.399972, 'chimichangas')
-  .done((response) => {
-    console.log(response);
-  })
+  //data.results[0].geometry.location
+  Geolocation.cityLocation("irvine").done(({ results: [first] }) => {
+    const { location } = first.geometry;
+    Yelp.getLocalBusinesses(location, food).done(response => {
+
+        YelpMap.renderMap(location, response);
+        renderYelpResults(response);
+    });
+    
+  });
+
   addEventHandlers();
 }
 
+function renderYelpResults({ businesses }) {
+    console.log(businesses[0]);
+  businesses.forEach(business => {
+    const {
+      name,
+      rating,
+      review_count,
+      display_phone,
+      image_url,
+      location,
+      url
+    } = business;
+
+
+  });
+}
+
 function addEventHandlers() {
-  $('.brand').on('click', returnToHomepage );
+  $(".brand").on("click", returnToHomepage);
   $(".modal").on("click", closeYoutubeModal);
 }
 
@@ -36,65 +59,75 @@ function renderLogoImage(url) {
   $(".flag img").attr("src", url);
 }
 
-function returnToHomepage(){
-    window.location.href = ( "index.html" );
+function returnToHomepage() {
+  window.location.href = "index.html";
 }
 
 //AIzaSyDCZkB-dNOWPZKRKZ8qExgMivNbyyAUcPQ
-function ajaxGoogleImageSearch( inputFoodStr ){
-    var ajaxObject = {
-        dataType: 'json',
-        data:{
-          key: "",
-            q: `${inputFoodStr}+gourmet+meal`,
-            num: 2,
-            type: 'image/jpeg',
-            imgSize: 'huge',
-            cx: "010569814504410284789:dq0xetlzofa",
-            safe: "high"
-        },
-        url: "https://www.googleapis.com/customsearch/v1",
-        method: "GET",
-        success: function(response){
-          let headerHtml = makeheader(inputFoodStr);
-          let foodHeaderTag = $("<h1>").html(headerHtml);
-          let foodImgTag = $("<img>").attr("src", response.items["1"].pagemap.cse_image["0"].src );
-          $(".food-section").prepend(foodHeaderTag,foodImgTag);
-        },
-        error: function () {
-          let headerHtml = makeheader(inputFoodStr);
-          let foodHeaderTag = $("<h1>").html(headerHtml);
-          $(".food-section").prepend(foodHeaderTag);
-        }
+function ajaxGoogleImageSearch(inputFoodStr) {
+  var ajaxObject = {
+    dataType: "json",
+    data: {
+      key: "",
+      q: `${inputFoodStr}+gourmet+meal`,
+      num: 2,
+      type: "image/jpeg",
+      imgSize: "huge",
+      cx: "010569814504410284789:dq0xetlzofa",
+      safe: "high"
+    },
+    url: "https://www.googleapis.com/customsearch/v1",
+    method: "GET",
+    success: function(response) {
+      let headerHtml = makeheader(inputFoodStr);
+      let foodHeaderTag = $("<h1>").html(headerHtml);
+      let foodImgTag = $("<img>").attr(
+        "src",
+        response.items["1"].pagemap.cse_image["0"].src
+      );
+      $(".food-section").prepend(foodHeaderTag, foodImgTag);
+    },
+    error: function() {
+      let headerHtml = makeheader(inputFoodStr);
+      let foodHeaderTag = $("<h1>").html(headerHtml);
+      $(".food-section").prepend(foodHeaderTag);
     }
-    $.ajax(ajaxObject);
+  };
+  $.ajax(ajaxObject);
 }
 
-function makeheader( inputString ){
-  let strArray = inputString.split(' ');
-  let result = '';
+function makeheader(inputString) {
+  let strArray = inputString.split(" ");
+  let result = "";
   for (let i = 0; i < strArray.length; i++) {
-      result += `<span>${strArray[i][0]}</span>${strArray[i].substr(1, strArray[i].length)} `;
+    result += `<span>${strArray[i][0]}</span>${strArray[i].substr(
+      1,
+      strArray[i].length
+    )} `;
   }
   return result;
 }
 
-
 function getWikipediaDescription(inputStr) {
   let pageTitle = null;
   let pageID = null;
-  const urlSearchStr = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + inputStr + "&format=json&srprop=snippet";
+  const urlSearchStr =
+    "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" +
+    inputStr +
+    "&format=json&srprop=snippet";
   let descrSearchStr = null;
 
   $.ajax({
     url: urlSearchStr,
-    dataType: 'jsonp',
+    dataType: "jsonp",
 
     success: function getPageTitle(data) {
       const paulsTitle = data.query.search[0].title;
       pageTitle = data.query.search[0].title;
       pageID = data.query.search[0].pageid;
-      descrSearchStr = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=" + pageTitle;
+      descrSearchStr =
+        "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=" +
+        pageTitle;
       getDescription();
     }
   });
@@ -102,13 +135,13 @@ function getWikipediaDescription(inputStr) {
   function getDescription() {
     $.ajax({
       url: descrSearchStr,
-      dataType: 'jsonp',
+      dataType: "jsonp",
 
-      success: function (data) {
-        var pageSummary = data.query.pages[pageID].extract
-        console.log('pageSummary:', pageSummary)
+      success: function(data) {
+        var pageSummary = data.query.pages[pageID].extract;
+        console.log("pageSummary:", pageSummary);
         /*****Save pageSummary onto DOM element here*****/
-        $('.wikiDescription').text(pageSummary);
+        $(".wikiDescription").text(pageSummary);
         /*$('DOMelement').text(pageSummary) */
         /***** ^^Do it here^^ ******/
       }
