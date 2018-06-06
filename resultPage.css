@@ -1,3 +1,11 @@
+/* Name: Electric Pink
+Hex: #FD297B
+
+Name: Fiery Rose
+Hex: #FF5864
+
+Name: Pastel Red
+Hex: #FF655B */
 body {
   margin: 0;
 }
@@ -38,41 +46,74 @@ header .country {
 }
 
 header .country h2.name {
-    font-weight: lighter;
-    text-transform: uppercase;
-    margin: auto 1rem;
+  font-weight: lighter;
+  text-transform: uppercase;
+  margin: auto 1rem;
 }
 
-.youtubeVideos{
-    width: 20vw;
-    background:rgba(80, 80, 80, 0.9);
-    height: 40vw;
+section.food-section {
+  height: calc(100vh - 2rem);
+}
 
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(80, 80, 80, 0.9);
+  z-index: 10;
 }
-.modal{
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color:rgba(80, 80, 80, 0.9);
-    z-index: 10;
+.youtubeModal {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  background-color: rgba(0, 0, 0, 0.9);
 }
-.youtubeModal{
-    width:50%;
-    height: 50%;
-    position: absolute;
-    top:20%;
-    left:25%;
-    background-color:rgba(0, 0, 0, 0.9);
+
+section.how-to {
+  height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
 }
-.videoDiv{
-    position: relative;
+
+section.how-to h1 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: lighter;
 }
-.videoImageTitle{
-    position: absolute;
-    color:white;
-    width:100%;
-    background-color:rgba(168, 168, 168, 0.9);
+
+section.how-to h1 span {
+  color: #FF5864;
 }
+
+section.how-to .youtubeVideos {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+
+.videoDiv {
+  width: 30%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.videoDiv img {
+  width: 100%;
+}
+
+.videoImageTitle {
+  color: black;
+  width: 100%;
+  font-weight: 2rem;
+}
+
 .hide{
     display: none;
 }
