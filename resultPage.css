@@ -155,6 +155,13 @@ section.how-to .youtubeVideos {
     cursor:pointer;
 }
 
+.mapContainer{width: 100vw;
+    height: 30vw;
+}
+#map {
+  height: 100%;
+  width: 100%;
+
 section.yelp {
   width: 100vw;
   height: 100vh;
