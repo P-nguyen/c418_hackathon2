@@ -39,7 +39,7 @@ function foodVideos(videos) {
 }
 
 function openYoutubeModal(videoClicked) {
-  $(".youtubeModal").html("");
+
 
   let youtubeVideo = $("<iframe>", {
     width: "100%",

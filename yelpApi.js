@@ -1,15 +1,23 @@
-class Geolocation{
-    static cityLocation(city){
-        const data = {
-            url: `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=AIzaSyC9ceHIlLUKyUjT0rnO_zEFMnYkbf220-o`,
-            method: "",
-            dataType: "json",
-            
-            success: cityLocation
-          };
-          $.ajax(data);
-        }
+const BASE_URL = "http://yelp.ongandy.com";
+
+const YELP_KEY =
+  "Cd4enAsuP8-RJG72Vu-KcFGjRFkklvvzsNer3NMokc800e5Apv5KhDncyYi56ptObgLpyU5EMxJoq4HueQ_vOmDd5igDri7DMW-lP4VNHu8TZ3fWLGp3reHoqTcWW3Yx";
+
+class Yelp {
+  static getLocalBusinesses(latitude, longitude, term = "food") {
+    const query = "businesses";
+    const config = {
+      crossDomain: true,
+      method: "POST",
+      url: `${BASE_URL}/${query}`,
+      data: {
+        latitude,
+        longitude,
+        term,
+        access_token: YELP_KEY
       }
-   function cityLocation(data){
-      console.log(data.results[0].geometry.location);
-   }
+    };
+
+    return $.ajax(config);
+  }
+}

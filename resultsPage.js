@@ -15,12 +15,19 @@ function initializeApp() {
   renderCountryName(countryName); //display's country name
   renderLogoImage(countryLogoUrl); //displays country flag
   
+
+  Yelp.getLocalBusinesses(37.786882, -122.399972, 'chimichangas')
+  .done((response) => {
+    console.log(response);
+  })
   addEventHandlers();
 }
 
 function addEventHandlers() {
   $('.brand').on('click', returnToHomepage );
   $(".modal").on("click", closeYoutubeModal); //closes fixed youtube modal
+  document.querySelector('.flag img').addEventListener('error', addDummyFlag);
+
 }
 
 function renderCountryName(name) {
@@ -30,6 +37,10 @@ function renderCountryName(name) {
 function renderLogoImage(url) {
   $(".flag img").attr("src", url);
 }
+
+function addDummyFlag () {
+  $('.flag img').attr('src', 'images/UN_flag.png')
+} 
 
 function returnToHomepage(){
     window.location.href = ( "index.html" );
@@ -101,7 +112,6 @@ function getWikipediaDescription(inputStr) {
 
       success: function (data) {
         var pageSummary = data.query.pages[pageID].extract
-        console.log('pageSummary:', pageSummary)
         /*****Save pageSummary onto DOM element here*****/
         $('.wikiDescription').text(pageSummary);
         /*$('DOMelement').text(pageSummary) */
