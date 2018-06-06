@@ -35,12 +35,14 @@ function returnToHomepage(){
     window.location.href = ( "index.html" );
 }
 
+//AIzaSyDCZkB-dNOWPZKRKZ8qExgMivNbyyAUcPQ
 function ajaxGoogleImageSearch( inputFoodStr ){
     var ajaxObject = {
         dataType: 'json',
         data:{
-          key: "AIzaSyCV18q5ZdhaazVuu7Msq2td6RMUbSKb_o8",
+          key: "",
             q: `${inputFoodStr}+gourmet+meal`,
+            num: 2,
             type: 'image/jpeg',
             imgSize: 'huge',
             cx: "010569814504410284789:dq0xetlzofa",
@@ -53,6 +55,11 @@ function ajaxGoogleImageSearch( inputFoodStr ){
           let foodHeaderTag = $("<h1>").html(headerHtml);
           let foodImgTag = $("<img>").attr("src", response.items["1"].pagemap.cse_image["0"].src );
           $(".food-section").prepend(foodHeaderTag,foodImgTag);
+        },
+        error: function () {
+          let headerHtml = makeheader(inputFoodStr);
+          let foodHeaderTag = $("<h1>").html(headerHtml);
+          $(".food-section").prepend(foodHeaderTag);
         }
     }
     $.ajax(ajaxObject);
