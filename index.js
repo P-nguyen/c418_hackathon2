@@ -6,22 +6,26 @@ function initializeApp() {
     $('.brand').on('click', returnToHomepage );
 }
 
+//Click logo to refresh front page and map.
 function returnToHomepage(){
+    //redirect the browser to page indicated.
     window.location.href = ( "index.html" );
 }
 
 function autoComplete( input$Ele, countryArray){
+    //privateData for lastFoundCountries and sets click handler
     let lastFoundCountries = [];
     $(".search-icon").on('click', sendCountryCode);
 
+    //sets handler to catch changes in <input>
     input$Ele.on('input', function(){
-        let val = this.value; //this is the input dom element
-        //close any open list.
-        if (!val) {
-            $(".autoCompleteBackground").text( "" );
-            lastFoundCountries = null;
+        let val = this.value; //this is the input from dom element
+        if (!val) { // check to make sure val exist
+            $(".autoCompleteBackground").text( "" ); //if not clear text in input
+            lastFoundCountries = []; //clear out lastfoundcountries
             return;} // this is when someone deletes previous inputs its a ''
 
+        //filter countries with similar characters to input val
         let filteredCountryArr = countryArray
                             .filter( country => country.name.substr(0, val.length).toUpperCase() === val.toUpperCase() ? true : false );
 
@@ -29,16 +33,17 @@ function autoComplete( input$Ele, countryArray){
         if (filteredCountryArr.length === 0){
             return $(".autoCompleteBackground").text( "" );}
 
-        this.value = capitalizeStr(val);
+        this.value = capitalizeStr(val); // capitalize first letter of word
 
-        lastFoundCountries = filteredCountryArr.splice(0,5);
-        const autoCompString = autoCompleteString( lastFoundCountries );
-        $(".autoCompleteBackground").text( autoCompString );
+        lastFoundCountries = filteredCountryArr.splice(0,5); // set lastFoundCountries to the last 5 found
+        const autoCompString = autoCompleteString( lastFoundCountries ); // sets up autocomplete grey text for div behind input
+        $(".autoCompleteBackground").text( autoCompString ); //sets text to existing dom element
 
     });
 
+    // checks if enter or right arrow as been pressed
     input$Ele.on("keydown", function(event){
-        if(event.keyCode === 39){
+        if(event.keyCode === 39){ // right arrow pressed
             if(lastFoundCountries<1){
                 return $(".autoCompleteBackground").text( "" );
             }
@@ -55,7 +60,7 @@ function autoComplete( input$Ele, countryArray){
                 $(".autoCompleteBackground").text( autoCompleteString( lastFoundCountries ));
             }
             return;
-        }else if(event.keyCode === 13){
+        }else if(event.keyCode === 13){ //enter keypressed redirect the browser to page indicated with country code.
             sendCountryCode();
         }
     });
@@ -73,7 +78,9 @@ function autoComplete( input$Ele, countryArray){
         try{
             let countryCode = lastFoundCountries[0].code;
             window.location.href = ( `resultPage.html?countrycode=${countryCode}` );
-        }catch(err){
+        }catch(err){ //if empty then it catches and replaces text.
+            $("input").attr("placeholder", 'No country selected.');
+            setTimeout(function(){ $("input").attr("placeholder", "which country?"); },1000);
             console.log('no country selected');
         }
         return;
