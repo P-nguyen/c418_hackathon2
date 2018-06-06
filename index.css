@@ -97,3 +97,29 @@ path:hover {
 .search-icon {
   cursor: pointer;
 }
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+@media screen and (max-width: 375px) {
+  #regions_div {
+    display:none;
+  }
+  header {
+    padding: 0;
+  }
+  .search-container{
+    width: 80%;
+  }
+  .search-container .inputField {
+    font-size: 1rem;
+  }
+  .search-container .autoCompleteBackground {
+    display: none;
+  }
+}
+
+datalist {
+  font-family: "Montserrat", sans-serif;
+}
