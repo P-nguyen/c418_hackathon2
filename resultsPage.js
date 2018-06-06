@@ -48,6 +48,7 @@ function addEventHandlers() {
   document.querySelector(".flag img").addEventListener("error", addDummyFlag);
   $(".search-icon").on("click", sendLocationToYelp );
   $("input.inputField").on("keydown", handleInputBarEnterKey );
+  $(window).scroll(hideBlinkScrollBar);
 }
 
 function renderCountryName(name) {
@@ -162,4 +163,8 @@ function handleInputBarEnterKey(event){
           sendLocationToYelp();
       }
       return;
+}
+
+function hideBlinkScrollBar () {
+  $('.blinkScrollBar').addClass('hideBlinkScrollBar');
 }
