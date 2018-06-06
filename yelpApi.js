@@ -21,3 +21,27 @@ class Yelp {
     return $.ajax(config);
   }
 }
+
+function YelpMap(response={lat:33.633985,lng:-117.733393},businesses={name:"Learning Fuze",coordinates:{latitude:null,longitude:null}}){
+
+      let myLatLng = {lat:response.lat, lng:response.lng};
+      let businessesLocation={lat:businesses.coordinates.latitude,lng:businesses.coordinates.longitude};
+    
+      const map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: myLatLng
+      });
+    
+      let marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: businesses.name
+      });
+    }
+   
+
+
+
+
+
+

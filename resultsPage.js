@@ -19,7 +19,7 @@ function initializeApp() {
   Geolocation.cityLocation("irvine").done(({ results: [first] }) => {
     const { location } = first.geometry;
     Yelp.getLocalBusinesses(location, food).done(response => {
-      YelpMap.renderMap(location, response);
+      // YelpMap.renderMap(location, response);
       renderYelpResults(response);
     });
   });
@@ -28,7 +28,7 @@ function initializeApp() {
 }
 
 function renderYelpResults({ businesses }) {
-  console.log(businesses[0]);
+  console.log(businesses);
   businesses.forEach(business => {
     const {
       name,
