@@ -93,3 +93,7 @@ path:hover {
   fill: dodgerblue;
   cursor: pointer;
 }
+
+.search-icon {
+  cursor: pointer;
+}
