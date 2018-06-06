@@ -2,25 +2,25 @@ $(document).ready(initializeApp);
 
 function initializeApp() {
   //grab url params here
-  const { search } = window.location;
-  const [, countryCode] = search.split("=");
+  const { search } = window.location; // gets current url
+  const [, countryCode] = search.split("="); // splits url into array and gets the second index.
 
   const countryName = CountryApi.getCountryNameFromCode(countryCode);
   const countryLogoUrl = CountryApi.getCountryLogoUrl(countryCode);
   const food = CountryApi.getFoodFromCountry(countryCode);
-  ajaxGoogleImageSearch(food); //insert name of food as string here
-  getWikipediaDescription(food);
-  YoutubeApi.youtubeServerCall(food);
+  ajaxGoogleImageSearch(food); //searches google search API for food
+  getWikipediaDescription(food); // gets wiki description
+  YoutubeApi.youtubeServerCall(food); //gets related videos from youtube APi
   
-  renderCountryName(countryName);
-  renderLogoImage(countryLogoUrl);
+  renderCountryName(countryName); //display's country name
+  renderLogoImage(countryLogoUrl); //displays country flag
   
   addEventHandlers();
 }
 
 function addEventHandlers() {
   $('.brand').on('click', returnToHomepage );
-  $(".modal").on("click", closeYoutubeModal);
+  $(".modal").on("click", closeYoutubeModal); //closes fixed youtube modal
 }
 
 function renderCountryName(name) {
@@ -66,9 +66,9 @@ function ajaxGoogleImageSearch( inputFoodStr ){
 }
 
 function makeheader( inputString ){
-  let strArray = inputString.split(' ');
+  let strArray = inputString.split(' '); //splits string into array
   let result = '';
-  for (let i = 0; i < strArray.length; i++) {
+  for (let i = 0; i < strArray.length; i++) { // concats html into result for $.html
       result += `<span>${strArray[i][0]}</span>${strArray[i].substr(1, strArray[i].length)} `;
   }
   return result;
