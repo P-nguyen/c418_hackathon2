@@ -657,7 +657,7 @@ class CountryApi {
   {
     "code": "NE",
     "name": "Niger",
-    "food": "Djerma Stew"
+    "food": "Jollof rice"
   },
   {
     "code": "NG",
