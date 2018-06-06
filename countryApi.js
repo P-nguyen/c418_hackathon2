@@ -12,252 +12,944 @@ class CountryApi {
         return country.code === countryCode.toUpperCase();
       }).name;
   }
+  static getFoodFomCountry(countryCode){
+    return _countries.find((country) => {
+      return country.food === countryCode.toUpperCase();
+    }).food;  
 }
+  _countries=[
+  {
+    "code": "AF",
+    "name": "Afghanistan",
+    "food": "Kabuli Palaw"
+  },
+  {
+    "code": "AL",
+    "name": "Albania",
+    "food": "kosi"
+  },
+  {
+    "code": "DZ",
+    "name": "Algeria",
+    "food": "Couscous"
+  },
+  {
+    "code": "AS",
+    "name": "American Samoa"
+  },
+  {
+    "code": "AD",
+    "name": "Andorra",
+    "food": "Escudella"
+  },
+  {
+    "code": "AO",
+    "name": "Angola",
+    "food": "Moamba de galinha"
+  },
+  {
+    "code": "AI",
+    "name": "Anguilla"
+  },
+  {
+    "code": "AQ",
+    "name": "Antarctica"
+  },
+  {
+    "code": "AG",
+    "name": "Antigua And Barbuda"
+  },
+  {
+    "code": "AR",
+    "name": "Argentina",
+    "food": "Empanada"
+  },
+  {
+    "code": "AM",
+    "name": "Armenia",
+    "food": "Khash"
+  },
+  {
+    "code": "AW",
+    "name": "Aruba",
+    "food": "Keshi yena"
+  },
+  {
+    "code": "AU",
+    "name": "Australia",
+    "food": "Pavlova"
+  },
+  {
+    "code": "AT",
+    "name": "Austria",
+    "food": "Wiener Schnitzel"
+  },
+  {
+    "code": "AZ",
+    "name": "Azerbaijan",
+    "food": " Dolma"
+  },
+  {
+    "code": "BS",
+    "name": "Bahamas",
+    "food": "Crack conch with peas and rice"
+  },
+  {
+    "code": "BH",
+    "name": "Bahrain",
+    "food": "Machboos"
+  },
+  {
+    "code": "BD",
+    "name": "Bangladesh",
+    "food": "Rice and Ilish"
+  },
+  {
+    "code": "BB",
+    "name": "Barbados",
+    "food": "Cou-Cou and Flying Fish"
+  },
+  {
+    "code": "BY",
+    "name": "Belarus",
+    "food": "Draniki"
+  },
+  {
+    "code": "BE",
+    "name": "Belgium",
+    "food": "Belgian waffle"
+  },
+  {
+    "code": "BZ",
+    "name": "Belize",
+    "food": "Fry jack"
+  },
+  {
+    "code": "BJ",
+    "name": "Benin",
+    "food": "Kuli Kuli"
+  },
+  {
+    "code": "BM",
+    "name": "Bermuda",
+    "food": "Bermuda fish chowder"
+  },
+  {
+    "code": "BT",
+    "name": "Bhutan",
+    "food": "Ema datshi"
+  },
+  {
+    "code": "BO",
+    "name": "Bolivia",
+    "food": "papa rellena"
+  },
+  {
+    "code": "BW",
+    "name": "Botswana",
+    "food": "Seswaa"
+  },
+  {
+    "code": "BR",
+    "name": "Brazil",
+    "food": "Feijoada"
+  },
+  {
+    "code": "BG",
+    "name": "Bulgaria",
+    "food": "Banitsa"
+  },
+  {
+    "code": "BF",
+    "name": "Burkina Faso",
+    "food": "Riz Gras"
+  },
+  {
+    "code": "BI",
+    "name": "Burundi",
+    "food": "Elephant soup"
+  },
+  {
+    "code": "KH",
+    "name": "Cambodia",
+    "food": "Amok trey"
+  },
+  {
+    "code": "CM",
+    "name": "Cameroon",
+    "food": "sweet potato"
+  },
+  {
+    "code": "CA",
+    "name": "Canada",
+    "food": "Nanaimo bar"
+  },
+  {
+    "code": "CV",
+    "name": "Cape Verde",
+    "food": "Cachupa"
+  },
+  {
+    "code": "KY",
+    "name": "Cayman Islands",
+    "food": "Conch Stew"
+  },
+  {
+    "code": "CF",
+    "name": "Central African Republic",
+    "food": "Cassava fufu"
+  },
+  {
+    "code": "TD",
+    "name": "Chad",
+    "food": "Boule"
+  },
+  {
+    "code": "CL",
+    "name": "Chile",
+    "food": "Empanada"
+  },
+  {
+    "code": "CN",
+    "name": "China",
+    "food": "dumplings"
+  },
+  {
+    "code": "CX",
+    "name": "Christmas Island",
+    "food":"papaya"
+  },
+  {
+    "code": "CO",
+    "name": "Colombia",
+    "food": "Sancocho"
+  },
+  {
+    "code": "KM",
+    "name": "Comoros",
+    "food": "Langouste a la Vanille"
+  },
+  {
+    "code": "CG",
+    "name": "Congo",
+    "food":"pondu"
+  },
+  {
+    "code": "CD",
+    "name": "Congo, Democratic Republic",
+    "food":"Moambe Chicken"
+  },
+  {
+    "code": "CK",
+    "name": "Cook Islands",
+    "food": "Rori"
+  },
+  {
+    "code": "CR",
+    "name": "Costa Rica",
+    "food": "Gallo pinto"
+  },
+  {
+    "code": "CI",
+    "name": "Cote D'Ivoire",
+    "food":"Aloko"
+  },
+  {
+    "code": "HR",
+    "name": "Croatia",
+    "food": "Istrian stew"
+  },
+  {
+    "code": "CU",
+    "name": "Cuba",
+    "food": "Ropa vieja"
+  },
+  {
+    "code": "CY",
+    "name": "Cyprus",
+    "food": "Souvla"
+  },
+  {
+    "code": "CZ",
+    "name": "Czech Republic",
+    "food": "roast pork"
+  },
+  {
+    "code": "DK",
+    "name": "Denmark",
+    "food": "fried pork"
+  },
+  {
+    "code": "DJ",
+    "name": "Djibouti",
+    "food": "Skoudehkaris"
+  },
+  {
+    "code": "DM",
+    "name": "Dominica",
+    "food": "Fish broth"
+  },
+  {
+    "code": "DO",
+    "name": "Dominican Republic",
+    "food": "Sancocho"
+  },
+  {
+    "code": "EC",
+    "name": "Ecuador",
+    "food": "Ceviche"
+  },
+  {
+    "code": "EG",
+    "name": "Egypt",
+    "food": "falafel"
+  },
+  {
+    "code": "SV",
+    "name": "El Salvador",
+    "food": "Pupusa"
+  },
+  {
+    "code": "GQ",
+    "name": "Equatorial Guinea",
+    "food": "Succotash"
+  },
+  {
+    "code": "ER",
+    "name": "Eritrea",
+    "food": "Zigini with injera,"
+  },
+  {
+    "code": "EE",
+    "name": "Estonia",
+    "food": "sauerkraut stew"
+  },
+  {
+    "code": "ET",
+    "name": "Ethiopia",
+    "food": "Kitfo"
+  },
+  {
+    "code": "FK",
+    "name": "Falkland Islands",
+    "food":"fried fish"
+  },
+  {
+    "code": "FO",
+    "name": "Faroe Islands",
+    "food":"Lamb and mutton"
+  },
+  {
+    "code": "FJ",
+    "name": "Fiji",
+    "food": "Kokoda"
+  },
+  {
+    "code": "FI",
+    "name": "Finland",
+    "food": "Karjalanpaisti"
+  },
+  {
+    "code": "FR",
+    "name": "France",
+    "food": "macarons"
+  },
+  {
+    "code": "GA",
+    "name": "Gabon",
+    "food": "Poulet Nyembwe"
+  },
+  {
+    "code": "GM",
+    "name": "Gambia",
+    "food": "Benachin"
+  },
+  {
+    "code": "GE",
+    "name": "Georgia",
+    "food": "Khachapuri"
+  },
+  {
+    "code": "DE",
+    "name": "Germany",
+    "food": "Sauerbraten"
+  },
+  {
+    "code": "GH",
+    "name": "Ghana",
+    "food": "Fufu"
+  },
+  {
+    "code": "GI",
+    "name": "Gibraltar",
+    "food": "Profiteroles"
+  },
+  {
+    "code": "GR",
+    "name": "Greece",
+    "food": "moussaka"
+  },
+  {
+    "code": "GL",
+    "name": "Greenland",
+    "food": "Kiviak"
+  },
+  {
+    "code": "GD",
+    "name": "Grenada",
+    "food": "Oil Down"
+  },
+  {
+    "code": "GT",
+    "name": "Guatemala",
+    "food": "Fiambre"
+  },
+  {
+    "code": "GN",
+    "name": "Guinea",
+    "food": "Poulet Yassa"
+  },
+  {
+    "code": "GW",
+    "name": "Guinea-Bissau",
+    "food": "Jollof rice"
+  },
+  {
+    "code": "GY",
+    "name": "Guyana",
+    "food": "Pepperpot"
+  },
+  {
+    "code": "HT",
+    "name": "Haiti",
+    "food": "Red beans and rice"
+  },
+  {
+    "code": "HN",
+    "name": "Honduras",
+    "food": "Carne asada"
+  },
+  {
+    "code": "HU",
+    "name": "Hungary",
+    "food": "chicken paprikash"
+  },
+  {
+    "code": "IS",
+    "name": "Iceland",
+    "food": "crossaint"
+  },
+  {
+    "code": "IN",
+    "name": "India",
+    "food": "Tandoori Chicken"
+  },
+  {
+    "code": "ID",
+    "name": "Indonesia",
+    "food": "Soto"
+  },
+  {
+    "code": "IQ",
+    "name": "Iraq",
+    "food": "Dolma"
+  },
+  {
+    "code": "IE",
+    "name": "Ireland",
+    "food": "Irish stew"
+  },
+  {
+    "code": "IL",
+    "name": "Israel",
+    "food": "Hummus"
+  },
+  {
+    "code": "IT",
+    "name": "Italy",
+    "food": "Risotto"
+  },
+  {
+    "code": "JM",
+    "name": "Jamaica",
+    "food": "Ackee and Saltfish"
+  },
+  {
+    "code": "JP",
+    "name": "Japan",
+    "food": "Sushi"
+  },
+  {
+    "code": "JO",
+    "name": "Jordan",
+    "food": "Mansaf"
+  },
+  {
+    "code": "KZ",
+    "name": "Kazakhstan",
+    "food": "Beshbarmak"
+  },
+  {
+    "code": "KE",
+    "name": "Kenya",
+    "food": "Ugali"
+  },
+  {
+    "code": "KI",
+    "name": "Kiribati",
+    "food": "Palusami"
+  },
+  {
+    "code": "KW",
+    "name": "Kuwait",
+    "food": "Machboos"
+  },
+  {
+    "code": "KG",
+    "name": "Kyrgyzstan",
+    "food": "Beshbarmak"
+  },
+  {
+    "code": "LV",
+    "name": "Latvia",
+    "food": "Latke"
+  },
+  {
+    "code": "LB",
+    "name": "Lebanon",
+    "food": "Kibbeh"
+  },
+  {
+    "code": "LR",
+    "name": "Liberia",
+    "food": "Dumboy"
+  },
+  {
+    "code": "LT",
+    "name": "Lithuania",
+    "food": "Cepelinai"
+  },
+  {
+    "code": "LU",
+    "name": "Luxembourg",
+    "food": "Judd mat Gaardebounen,"
+  },
+  {
+    "code": "MK",
+    "name": "Macedonia",
+    "food": "Balkan"
+  },
+  {
+    "code": "MG",
+    "name": "Madagascar",
+    "food": "Romazava"
+  },
+  {
+    "code": "MW",
+    "name": "Malawi",
+    "food": "Nshima"
+  },
+  {
+    "code": "MY",
+    "name": "Malaysia",
+    "food": "Nasi lemak"
+  },
+  {
+    "code": "MV",
+    "name": "Maldives",
+    "food": "Garudhiya"
+  },
+  {
+    "code": "ML",
+    "name": "Mali",
+    "food": "Maafe"
+  },
+  {
+    "code": "MT",
+    "name": "Malta",
+    "food": "Pastizzi"
+  },
+  {
+    "code": "MH",
+    "name": "Marshall Islands",
+    "food": "Macadamia nut pie"
+  },
+  {
+    "code": "MR",
+    "name": "Mauritania",
+    "food": "Thieboudienne"
+  },
+  {
+    "code": "MU",
+    "name": "Mauritius",
+    "food": "Octopus Curry"
+  },
+  {
+    "code": "MX",
+    "name": "Mexico",
+    "food": "Mole poblano"
+  },
+  {
+    "code": "MD",
+    "name": "Moldova",
+    "food": "Sarmale"
+  },
+  {
+    "code": "MC",
+    "name": "Monaco",
+    "food": "Barbaguian"
+  },
+  {
+    "code": "MN",
+    "name": "Mongolia",
+    "food": "Buuz"
+  },
+  {
+    "code": "ME",
+    "name": "Montenegro",
+    "food": "Punjene paprike"
+  },
+  {
+    "code": "MS",
+    "name": "Montserrat",
+    "food": "Goat water"
+  },
+  {
+    "code": "MA",
+    "name": "Morocco",
+    "food": "Couscous"
+  },
+  {
+    "code": "MZ",
+    "name": "Mozambique",
+    "food": "Frango"
+  },
+  {
+    "code": "NA",
+    "name": "Namibia",
+    "food": "Braais"
+  },
+  {
+    "code": "NR",
+    "name": "Nauru",
+    "food": "Coconut fish"
+  },
+  {
+    "code": "NP",
+    "name": "Nepal",
+    "food": "Dal bhat"
+  },
+  {
+    "code": "NL",
+    "name": "Netherlands",
+    "food": "Stamppot"
+  },
+  {
+    "code": "NZ",
+    "name": "New Zealand",
+    "food": "Pavlova"
+  },
+  {
+    "code": "NI",
+    "name": "Nicaragua",
+    "food": "Gallo pinto"
+  },
+  {
+    "code": "NE",
+    "name": "Niger",
+    "food": "Djerma Stew"
+  },
+  {
+    "code": "NG",
+    "name": "Nigeria",
+    "food": "Fufu and Egusi soup"
+  },
+  {
+    "code": "NO",
+    "name": "Norway",
+    "food": "Lapskaus"
+  },
+  {
+    "code": "OM",
+    "name": "Oman",
+    "food": "Shuwa"
+  },
+  {
+    "code": "PK",
+    "name": "Pakistan",
+    "food": "Seekh Kabab"
+  },
+  {
+    "code": "PW",
+    "name": "Palau",
+    "food": "Bat soup"
+  },
 
-_countries = [
-  { code: "AF", name: "Afghanistan" },
-  { code: "AX", name: "Aland Islands" },
-  { code: "AL", name: "Albania" },
-  { code: "DZ", name: "Algeria" },
-  { code: "AS", name: "American Samoa" },
-  { code: "AD", name: "Andorra" },
-  { code: "AO", name: "Angola" },
-  { code: "AI", name: "Anguilla" },
-  { code: "AQ", name: "Antarctica" },
-  { code: "AG", name: "Antigua And Barbuda" },
-  { code: "AR", name: "Argentina" },
-  { code: "AM", name: "Armenia" },
-  { code: "AW", name: "Aruba" },
-  { code: "AU", name: "Australia" },
-  { code: "AT", name: "Austria" },
-  { code: "AZ", name: "Azerbaijan" },
-  { code: "BS", name: "Bahamas" },
-  { code: "BH", name: "Bahrain" },
-  { code: "BD", name: "Bangladesh" },
-  { code: "BB", name: "Barbados" },
-  { code: "BY", name: "Belarus" },
-  { code: "BE", name: "Belgium" },
-  { code: "BZ", name: "Belize" },
-  { code: "BJ", name: "Benin" },
-  { code: "BM", name: "Bermuda" },
-  { code: "BT", name: "Bhutan" },
-  { code: "BO", name: "Bolivia" },
-  { code: "BA", name: "Bosnia And Herzegovina" },
-  { code: "BW", name: "Botswana" },
-  { code: "BV", name: "Bouvet Island" },
-  { code: "BR", name: "Brazil" },
-  { code: "IO", name: "British Indian Ocean Territory" },
-  { code: "BN", name: "Brunei Darussalam" },
-  { code: "BG", name: "Bulgaria" },
-  { code: "BF", name: "Burkina Faso" },
-  { code: "BI", name: "Burundi" },
-  { code: "KH", name: "Cambodia" },
-  { code: "CM", name: "Cameroon" },
-  { code: "CA", name: "Canada" },
-  { code: "CV", name: "Cape Verde" },
-  { code: "KY", name: "Cayman Islands" },
-  { code: "CF", name: "Central African Republic" },
-  { code: "TD", name: "Chad" },
-  { code: "CL", name: "Chile" },
-  { code: "CN", name: "China" },
-  { code: "CX", name: "Christmas Island" },
-  { code: "CC", name: "Cocos (Keeling) Islands" },
-  { code: "CO", name: "Colombia" },
-  { code: "KM", name: "Comoros" },
-  { code: "CG", name: "Congo" },
-  { code: "CD", name: "Congo, Democratic Republic" },
-  { code: "CK", name: "Cook Islands" },
-  { code: "CR", name: "Costa Rica" },
-  { code: "CI", name: "Cote D'Ivoire" },
-  { code: "HR", name: "Croatia" },
-  { code: "CU", name: "Cuba" },
-  { code: "CY", name: "Cyprus" },
-  { code: "CZ", name: "Czech Republic" },
-  { code: "DK", name: "Denmark" },
-  { code: "DJ", name: "Djibouti" },
-  { code: "DM", name: "Dominica" },
-  { code: "DO", name: "Dominican Republic" },
-  { code: "EC", name: "Ecuador" },
-  { code: "EG", name: "Egypt" },
-  { code: "SV", name: "El Salvador" },
-  { code: "GQ", name: "Equatorial Guinea" },
-  { code: "ER", name: "Eritrea" },
-  { code: "EE", name: "Estonia" },
-  { code: "ET", name: "Ethiopia" },
-  { code: "FK", name: "Falkland Islands (Malvinas)" },
-  { code: "FO", name: "Faroe Islands" },
-  { code: "FJ", name: "Fiji" },
-  { code: "FI", name: "Finland" },
-  { code: "FR", name: "France" },
-  { code: "GF", name: "French Guiana" },
-  { code: "PF", name: "French Polynesia" },
-  { code: "TF", name: "French Southern Territories" },
-  { code: "GA", name: "Gabon" },
-  { code: "GM", name: "Gambia" },
-  { code: "GE", name: "Georgia" },
-  { code: "DE", name: "Germany" },
-  { code: "GH", name: "Ghana" },
-  { code: "GI", name: "Gibraltar" },
-  { code: "GR", name: "Greece" },
-  { code: "GL", name: "Greenland" },
-  { code: "GD", name: "Grenada" },
-  { code: "GP", name: "Guadeloupe" },
-  { code: "GU", name: "Guam" },
-  { code: "GT", name: "Guatemala" },
-  { code: "GG", name: "Guernsey" },
-  { code: "GN", name: "Guinea" },
-  { code: "GW", name: "Guinea-Bissau" },
-  { code: "GY", name: "Guyana" },
-  { code: "HT", name: "Haiti" },
-  { code: "HM", name: "Heard Island & Mcdonald Islands" },
-  { code: "VA", name: "Holy See (Vatican City State)" },
-  { code: "HN", name: "Honduras" },
-  { code: "HK", name: "Hong Kong" },
-  { code: "HU", name: "Hungary" },
-  { code: "IS", name: "Iceland" },
-  { code: "IN", name: "India" },
-  { code: "ID", name: "Indonesia" },
-  { code: "IR", name: "Iran, Islamic Republic Of" },
-  { code: "IQ", name: "Iraq" },
-  { code: "IE", name: "Ireland" },
-  { code: "IM", name: "Isle Of Man" },
-  { code: "IL", name: "Israel" },
-  { code: "IT", name: "Italy" },
-  { code: "JM", name: "Jamaica" },
-  { code: "JP", name: "Japan" },
-  { code: "JE", name: "Jersey" },
-  { code: "JO", name: "Jordan" },
-  { code: "KZ", name: "Kazakhstan" },
-  { code: "KE", name: "Kenya" },
-  { code: "KI", name: "Kiribati" },
-  { code: "KR", name: "Korea" },
-  { code: "KW", name: "Kuwait" },
-  { code: "KG", name: "Kyrgyzstan" },
-  { code: "LA", name: "Lao People's Democratic Republic" },
-  { code: "LV", name: "Latvia" },
-  { code: "LB", name: "Lebanon" },
-  { code: "LS", name: "Lesotho" },
-  { code: "LR", name: "Liberia" },
-  { code: "LY", name: "Libyan Arab Jamahiriya" },
-  { code: "LI", name: "Liechtenstein" },
-  { code: "LT", name: "Lithuania" },
-  { code: "LU", name: "Luxembourg" },
-  { code: "MO", name: "Macao" },
-  { code: "MK", name: "Macedonia" },
-  { code: "MG", name: "Madagascar" },
-  { code: "MW", name: "Malawi" },
-  { code: "MY", name: "Malaysia" },
-  { code: "MV", name: "Maldives" },
-  { code: "ML", name: "Mali" },
-  { code: "MT", name: "Malta" },
-  { code: "MH", name: "Marshall Islands" },
-  { code: "MQ", name: "Martinique" },
-  { code: "MR", name: "Mauritania" },
-  { code: "MU", name: "Mauritius" },
-  { code: "YT", name: "Mayotte" },
-  { code: "MX", name: "Mexico" },
-  { code: "FM", name: "Micronesia, Federated States Of" },
-  { code: "MD", name: "Moldova" },
-  { code: "MC", name: "Monaco" },
-  { code: "MN", name: "Mongolia" },
-  { code: "ME", name: "Montenegro" },
-  { code: "MS", name: "Montserrat" },
-  { code: "MA", name: "Morocco" },
-  { code: "MZ", name: "Mozambique" },
-  { code: "MM", name: "Myanmar" },
-  { code: "NA", name: "Namibia" },
-  { code: "NR", name: "Nauru" },
-  { code: "NP", name: "Nepal" },
-  { code: "NL", name: "Netherlands" },
-  { code: "AN", name: "Netherlands Antilles" },
-  { code: "NC", name: "New Caledonia" },
-  { code: "NZ", name: "New Zealand" },
-  { code: "NI", name: "Nicaragua" },
-  { code: "NE", name: "Niger" },
-  { code: "NG", name: "Nigeria" },
-  { code: "NU", name: "Niue" },
-  { code: "NF", name: "Norfolk Island" },
-  { code: "MP", name: "Northern Mariana Islands" },
-  { code: "NO", name: "Norway" },
-  { code: "OM", name: "Oman" },
-  { code: "PK", name: "Pakistan" },
-  { code: "PW", name: "Palau" },
-  { code: "PS", name: "Palestinian Territory, Occupied" },
-  { code: "PA", name: "Panama" },
-  { code: "PG", name: "Papua New Guinea" },
-  { code: "PY", name: "Paraguay" },
-  { code: "PE", name: "Peru" },
-  { code: "PH", name: "Philippines" },
-  { code: "PN", name: "Pitcairn" },
-  { code: "PL", name: "Poland" },
-  { code: "PT", name: "Portugal" },
-  { code: "PR", name: "Puerto Rico" },
-  { code: "QA", name: "Qatar" },
-  { code: "RE", name: "Reunion" },
-  { code: "RO", name: "Romania" },
-  { code: "RU", name: "Russian Federation" },
-  { code: "RW", name: "Rwanda" },
-  { code: "BL", name: "Saint Barthelemy" },
-  { code: "SH", name: "Saint Helena" },
-  { code: "KN", name: "Saint Kitts And Nevis" },
-  { code: "LC", name: "Saint Lucia" },
-  { code: "MF", name: "Saint Martin" },
-  { code: "PM", name: "Saint Pierre And Miquelon" },
-  { code: "VC", name: "Saint Vincent And Grenadines" },
-  { code: "WS", name: "Samoa" },
-  { code: "SM", name: "San Marino" },
-  { code: "ST", name: "Sao Tome And Principe" },
-  { code: "SA", name: "Saudi Arabia" },
-  { code: "SN", name: "Senegal" },
-  { code: "RS", name: "Serbia" },
-  { code: "SC", name: "Seychelles" },
-  { code: "SL", name: "Sierra Leone" },
-  { code: "SG", name: "Singapore" },
-  { code: "SK", name: "Slovakia" },
-  { code: "SI", name: "Slovenia" },
-  { code: "SB", name: "Solomon Islands" },
-  { code: "SO", name: "Somalia" },
-  { code: "ZA", name: "South Africa" },
-  { code: "GS", name: "South Georgia And Sandwich Isl." },
-  { code: "ES", name: "Spain" },
-  { code: "LK", name: "Sri Lanka" },
-  { code: "SD", name: "Sudan" },
-  { code: "SR", name: "Suriname" },
-  { code: "SJ", name: "Svalbard And Jan Mayen" },
-  { code: "SZ", name: "Swaziland" },
-  { code: "SE", name: "Sweden" },
-  { code: "CH", name: "Switzerland" },
-  { code: "SY", name: "Syrian Arab Republic" },
-  { code: "TW", name: "Taiwan" },
-  { code: "TJ", name: "Tajikistan" },
-  { code: "TZ", name: "Tanzania" },
-  { code: "TH", name: "Thailand" },
-  { code: "TL", name: "Timor-Leste" },
-  { code: "TG", name: "Togo" },
-  { code: "TK", name: "Tokelau" },
-  { code: "TO", name: "Tonga" },
-  { code: "TT", name: "Trinidad And Tobago" },
-  { code: "TN", name: "Tunisia" },
-  { code: "TR", name: "Turkey" },
-  { code: "TM", name: "Turkmenistan" },
-  { code: "TC", name: "Turks And Caicos Islands" },
-  { code: "TV", name: "Tuvalu" },
-  { code: "UG", name: "Uganda" },
-  { code: "UA", name: "Ukraine" },
-  { code: "AE", name: "United Arab Emirates" },
-  { code: "GB", name: "United Kingdom" },
-  { code: "US", name: "United States" },
-  { code: "UM", name: "United States Outlying Islands" },
-  { code: "UY", name: "Uruguay" },
-  { code: "UZ", name: "Uzbekistan" },
-  { code: "VU", name: "Vanuatu" },
-  { code: "VE", name: "Venezuela" },
-  { code: "VN", name: "Viet Nam" },
-  { code: "VG", name: "Virgin Islands, British" },
-  { code: "VI", name: "Virgin Islands, U.S." },
-  { code: "WF", name: "Wallis And Futuna" },
-  { code: "EH", name: "Western Sahara" },
-  { code: "YE", name: "Yemen" },
-  { code: "ZM", name: "Zambia" },
-  { code: "ZW", name: "Zimbabwe" }
-];
+  {
+    "code": "PA",
+    "name": "Panama",
+    "food": "Sancocho de gallina"
+  },
+  {
+    "code": "PG",
+    "name": "Papua New Guinea",
+    "food": "Mumu"
+  },
+  {
+    "code": "PY",
+    "name": "Paraguay",
+    "food": "Sopa paraguaya"
+  },
+  {
+    "code": "PE",
+    "name": "Peru",
+    "food": "Ceviche"
+  },
+  {
+    "code": "PH",
+    "name": "Philippines",
+    "food": "Adobo"
+  },
+  {
+    "code": "PL",
+    "name": "Poland",
+    "food": "Bigos"
+  },
+  {
+    "code": "PT",
+    "name": "Portugal",
+    "food": "Bacalhau"
+  },
+  {
+    "code": "PR",
+    "name": "Puerto Rico",
+    "food": "Mofongo"
+  },
+  {
+    "code": "QA",
+    "name": "Qatar",
+    "food": "Machboos"
+  },
+  {
+    "code": "RO",
+    "name": "Romania",
+    "food": "Sarmale"
+  },
+  {
+    "code": "RU",
+    "name": "Russian",
+    "food":"Beef Stroganoff",
+  },
+  {
+    "code": "RW",
+    "name": "Rwanda",
+    "food": "Ugali"
+  },
+  {
+    "code": "LC",
+    "name": "Saint Lucia",
+    "food": "Green fig and saltfish"
+  },
+  {
+    "code": "WS",
+    "name": "Samoa",
+    "food": "Palusami"
+  },
+  {
+    "code": "SM",
+    "name": "San Marino",
+    "food": "Torta Tre Monti"
+  },
+
+  {
+    "code": "SA",
+    "name": "Saudi Arabia",
+    "food": "Kabsa"
+  },
+  {
+    "code": "SN",
+    "name": "Senegal",
+    "food": "Thieboudienne"
+  },
+  {
+    "code": "RS",
+    "name": "Serbia",
+    "food": "Ajvar"
+  },
+  {
+    "code": "SC",
+    "name": "Seychelles",
+    "food": "Fruit Bat Soup"
+  },
+  {
+    "code": "SL",
+    "name": "Sierra Leone",
+    "food": "Cassava leaves"
+  },
+  {
+    "code": "SG",
+    "name": "Singapore",
+    "food": "Chilli crab"
+  },
+  {
+    "code": "SK",
+    "name": "Slovakia",
+    "food": "Bryndzove halushky"
+  },
+  {
+    "code": "SI",
+    "name": "Slovenia",
+    "food": "Belokranjska povitica"
+  },
+  {
+    "code": "SB",
+    "name": "Solomon Islands",
+    "food": "Poi"
+  },
+  {
+    "code": "SO",
+    "name": "Somalia",
+    "food": "Canjeero with goat stew"
+  },
+  {
+    "code": "ZA",
+    "name": "South Africa",
+    "food": "Bobotie"
+  },
+  {
+    "code": "ES",
+    "name": "Spain",
+    "food": "Tortilla espanola"
+  },
+  {
+    "code": "LK",
+    "name": "Sri Lanka",
+    "food": "Rice and curry"
+  },
+  {
+    "code": "SD",
+    "name": "Sudan",
+    "food": "Ful medames"
+  },
+  {
+    "code": "SR",
+    "name": "Suriname",
+    "food": "Pom"
+  },
+  {
+    "code": "SE",
+    "name": "Sweden",
+    "food": "Ostkaka"
+  },
+  {
+    "code": "CH",
+    "name": "Switzerland",
+    "food": "Fondue"
+  },
+  {
+    "code": "TW",
+    "name": "Taiwan",
+    "food": "Beef noodle soup"
+  },
+  {
+    "code": "TJ",
+    "name": "Tajikistan",
+    "food": "O'sh"
+  },
+  {
+    "code": "TZ",
+    "name": "Tanzania",
+    "food": "Ugali"
+  },
+  {
+    "code": "TH",
+    "name": "Thailand",
+    "food": "Pad Thai"
+  },
+  {
+    "code": "TG",
+    "name": "Togo",
+    "food": "Yeyebessissi"
+  },
+  {
+    "code": "TN",
+    "name": "Tunisia",
+    "food": "Couscous"
+  },
+  {
+    "code": "TR",
+    "name": "Turkey",
+    "food": "Kuru fasulye with pilav"
+  },
+  {
+    "code": "TM",
+    "name": "Turkmenistan",
+    "food": "Palaw"
+  },
+  {
+    "code": "TV",
+    "name": "Tuvalu",
+    "food": "Pulaka"
+  },
+  {
+    "code": "UG",
+    "name": "Uganda",
+    "food": "Matoke"
+  },
+  {
+    "code": "UA",
+    "name": "Ukraine",
+    "food": "Borscht"
+  },
+  {
+    "code": "AE",
+    "name": "United Arab Emirates",
+    "food": "Biryani"
+  },
+  {
+    "code": "GB",
+    "name": "United Kingdom",
+    "food": "Chicken tikka masala"
+  },
+  {
+    "code": "US",
+    "name": "United States",
+    "food": "Apple pie"
+  },
+
+  {
+    "code": "UY",
+    "name": "Uruguay",
+    "food": "Asado"
+  },
+  {
+    "code": "UZ",
+    "name": "Uzbekistan",
+    "food": "pork stew"
+  },
+  {
+    "code": "VU",
+    "name": "Vanuatu",
+    "food": "Lap lap"
+  },
+  {
+    "code": "VE",
+    "name": "Venezuela",
+    "food": "PABELLON CRIOLLO"
+  },
+  {
+    "code": "YE",
+    "name": "Yemen",
+    "food": "Kabsa"
+  },
+  {
+    "code": "ZM",
+    "name": "Zambia",
+    "food": "Nshima"
+  },
+  {
+    "code": "ZW",
+    "name": "Zimbabwe",
+    "food": "Sadza"
+  }
+]
