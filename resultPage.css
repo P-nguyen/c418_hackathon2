@@ -114,6 +114,10 @@ section.how-to .youtubeVideos {
   font-weight: 2rem;
 }
 
-.hide {
-  display: none;
+.hide{
+    display: none;
+}
+
+.brand:hover{
+    cursor:pointer;
 }
