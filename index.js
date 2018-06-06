@@ -32,9 +32,22 @@ function autoComplete( input$Ele, countryArray){
         this.value = capitalizeStr(val);
 
         lastFoundCountries = filteredCountryArr.splice(0,5);
-        const autoCompString = autoCompleteString( lastFoundCountries );
-        $(".autoCompleteBackground").text( autoCompString );
-
+        if ($(window).width() <= 375) {
+            let dropDownMenu = $('<datalist>', {
+                id: 'countries'
+            });
+            for (let countryMenuCount = 0; countryMenuCount < lastFoundCountries.length; countryMenuCount++) {
+                let countryDropDown = $('<option>', {
+                    value: lastFoundCountries[countryMenuCount].name
+                })
+                $(dropDownMenu).append(countryDropDown);
+            }
+            $('.search-container').append(dropDownMenu);
+        } else {
+            $('datalist').remove();
+            const autoCompString = autoCompleteString( lastFoundCountries );
+            $(".autoCompleteBackground").text( autoCompString );
+        }
     });
 
     input$Ele.on("keydown", function(event){
