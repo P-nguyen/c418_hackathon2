@@ -110,6 +110,6 @@ path {
 }
 
 path:hover {
-  stroke-width:3;
-  stroke: #ffffff;
+  fill: dodgerblue;
+  cursor: pointer;
 }

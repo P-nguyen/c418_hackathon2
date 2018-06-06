@@ -14,6 +14,7 @@ google.charts.load('current', {
     'packages':['geochart'],
     'mapsApiKey': 'AIzaSyBcB4StL9IQqNuDsMzO7j_uvPvQXnVhn8U'
   });
+  
   countrySeparateArray();
   google.charts.setOnLoadCallback(drawRegionsMap);
   function drawRegionsMap() {
