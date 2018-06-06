@@ -8,10 +8,39 @@ function initializeApp() {
   const countryLogoUrl = CountryApi.getCountryLogoUrl(countryCode)
   console.log(countryLogoUrl);
   $('h2.name').text(countryName);
+
   $('.flag img').attr('src', countryLogoUrl);
   //getFoodFrom Martin;
   const food = CountryApi.getFoodFromCountry(countryCode);
   getWikipediaDescription(food);
+
+  $('.flag img').attr('src',countryLogoUrl);
+  $('.brand').on('click', returnToHomepage );
+  ajaxGoogleImageSearch(); //insert name of food as string here
+}
+
+function returnToHomepage(){
+    window.location.href = ( "index.html" );
+}
+
+function ajaxGoogleImageSearch( inputFoodStr ){
+    var ajaxObject = {
+        dataType: 'json',
+        data:{
+          key: "AIzaSyCV18q5ZdhaazVuu7Msq2td6RMUbSKb_o8",
+            q: inputFoodStr,
+            type: 'image/jpeg',
+            imgSize: 'huge',
+            cx: "010569814504410284789:dq0xetlzofa"
+        },
+        url: "https://www.googleapis.com/customsearch/v1",
+        method: "GET",
+        success: function(response){
+          console.log(response);
+          console.log(response.items["1"].pagemap.cse_image["0"].src);
+        }
+    }
+    $.ajax(ajaxObject);
 }
 
 
