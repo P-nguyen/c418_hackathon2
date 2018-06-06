@@ -209,3 +209,16 @@ section.yelp .search-container .autoCompleteBackground {
   height: inherit;
   width: 90%;
 }
+
+@media screen and (max-width: 375px) {
+  header{
+    padding: 1rem 0;
+  }
+  h1.brand{
+    font-size: 1.5rem;
+  }
+
+  header .country h2.name{
+    display:none;
+  }
+}
