@@ -53,5 +53,6 @@ function openYoutubeModal(videoClicked) {
 }
 
 function closeYoutubeModal() {
+  $(".youtubeModal").html("");
   $(".modal").addClass("hide");
 }
