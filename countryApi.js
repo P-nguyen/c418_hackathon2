@@ -12,12 +12,12 @@ class CountryApi {
         return country.code === countryCode.toUpperCase();
       }).name;
   }
-  static getFoodFomCountry(countryCode){
+  static getFoodFromCountry(countryCode){
     return _countries.find((country) => {
-      return country.food === countryCode.toUpperCase();
+      return country.code === countryCode.toUpperCase();
     }).food;  
-}
-  _countries=[
+}}
+  const _countries=[
   {
     "code": "AF",
     "name": "Afghanistan",

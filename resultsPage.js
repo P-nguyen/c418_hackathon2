@@ -12,6 +12,7 @@ function initializeApp() {
   $('.flag img').attr('src', countryLogoUrl);
   //getFoodFrom Martin;
   const food = CountryApi.getFoodFromCountry(countryCode);
+  console.log(food);
   getWikipediaDescription(food);
 
   $('.flag img').attr('src',countryLogoUrl);
