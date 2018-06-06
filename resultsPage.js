@@ -46,6 +46,8 @@ function addEventHandlers() {
   $(".brand").on("click", returnToHomepage);
   $(".modal").on("click", closeYoutubeModal); //closes fixed youtube modal
   document.querySelector(".flag img").addEventListener("error", addDummyFlag);
+  $(".search-icon").on("click", sendLocationToYelp );
+  $("input.inputField").on("keydown", handleInputBarEnterKey );
 }
 
 function renderCountryName(name) {
@@ -147,4 +149,17 @@ function getWikipediaDescription(inputStr) {
       }
     });
   }
+}
+
+function sendLocationToYelp(){
+  let location = $("input.inputField")[0].value;
+  console.log(location);
+  return;
+}
+
+function handleInputBarEnterKey(event){
+      if(event.keyCode === 13){ //enter keypressed redirect the browser to page indicated with country code.
+          sendLocationToYelp();
+      }
+      return;
 }
