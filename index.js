@@ -37,6 +37,7 @@ function autoComplete( input$Ele, countryArray){
 
         lastFoundCountries = filteredCountryArr.splice(0,5); // set lastFoundCountries to the last 5 found
         if ($(window).width() <= 375) {
+            $('datalist').remove();
             let dropDownMenu = $('<datalist>', {
                 id: 'countries'
             });
