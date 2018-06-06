@@ -65,8 +65,31 @@ section.food-section {
   height: calc(100vh - 2rem);
 }
 
-section.food-section img{
+section.food-section h1 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: lighter;
+  margin-left: 15px;
+}
+
+section.food-section h1 span {
+  color: #FF5864;
+}
+
+.foodImageContainer {
+
   height: 50vh;
+  text-align: center;
+}
+
+.foodImageContainer>img {
+  height: 100%;
+}
+
+.wikiDescription {
+  width: 50%;
+  float: right;
+  margin-top: 33.2px;
 }
 
 .modal {
@@ -91,6 +114,7 @@ section.how-to {
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
+  clear: both;
 }
 
 section.how-to .youtubeVideos {

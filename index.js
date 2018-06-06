@@ -36,8 +36,23 @@ function autoComplete( input$Ele, countryArray){
         this.value = capitalizeStr(val); // capitalize first letter of word
 
         lastFoundCountries = filteredCountryArr.splice(0,5); // set lastFoundCountries to the last 5 found
-        const autoCompString = autoCompleteString( lastFoundCountries ); // sets up autocomplete grey text for div behind input
-        $(".autoCompleteBackground").text( autoCompString ); //sets text to existing dom element
+        if ($(window).width() <= 375) {
+            $('datalist').remove();
+            let dropDownMenu = $('<datalist>', {
+                id: 'countries'
+            });
+            for (let countryMenuCount = 0; countryMenuCount < lastFoundCountries.length; countryMenuCount++) {
+                let countryDropDown = $('<option>', {
+                    value: lastFoundCountries[countryMenuCount].name
+                })
+                $(dropDownMenu).append(countryDropDown);
+            }
+            $('.search-container').append(dropDownMenu);
+        } else {
+            $('datalist').remove();
+            const autoCompString = autoCompleteString( lastFoundCountries ); // sets up autocomplete grey text for div behind input
+            $(".autoCompleteBackground").text( autoCompString ); //sets text to existing dom element
+        }
 
     });
 
