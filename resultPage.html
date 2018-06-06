@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="countryApi.js"></script>
+    <script src="wikiApi.js"></script>
+    <script src="geolocation.js"> </script>
+    <script src="yelpApi.js"></script>
+    <script src="youtubeApi.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9ceHIlLUKyUjT0rnO_zEFMnYkbf220-o&callback=YelpMap"></script>
+    <script src="resultsPage.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="resultPage.css">
+    <title></title>
+</head>
+<body>
+    <div class="modal hide">
+        <div class="youtubeModal">
+        </div>
+    </div>
+
+    <header>
+        <h1 class="brand">
+            <span>f</span> ood
+            <span>n</span> ation
+        </h1>
+        <div class="country">
+            <div class="flag">
+                <img src="">
+            </div>
+            <h2 class="name">
+                Mexico
+            </h2>
+        </div>
+    </header>
+
+    <section class="food-section">
+        <div class="wikiDescription"></div>
+    </section>
+    <section class="how-to" id="videos">
+        <h1>
+            <span>M</span>ake
+            <span>I</span>t
+            <span>Y</span>ourself</h1>
+        <div class="youtubeVideos">
+
+        </div>
+    </section>
+
+    <section class="yelp" >
+        <h1>Grab a bite Nearby</h1>
+        <div class="yelp-list">
+
+        </div>
+    </section>
+    <div class="mapContainer">
+            <div id="map">  
+            </div>
+    </div>
+    
+</body>
+
+</html>
