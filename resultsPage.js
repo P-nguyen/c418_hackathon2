@@ -15,6 +15,11 @@ function initializeApp() {
   renderCountryName(countryName);
   renderLogoImage(countryLogoUrl);
   
+
+  Yelp.getLocalBusinesses(37.786882, -122.399972, 'chimichangas')
+  .done((response) => {
+    console.log(response);
+  })
   addEventHandlers();
 }
 
