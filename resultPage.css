@@ -77,18 +77,21 @@ section.food-section h1 span {
 }
 
 .foodImageContainer {
-  height: 50vh;
-  text-align: center;
+  display: inline-block;
 }
 
 .foodImageContainer>img {
-  height: 100%;
+  position: relative;
+  width: 38.2vw;
+  left: 23.6%;
 }
 
 .wikiDescription {
   width: 50%;
   float: right;
-  margin-top: 33.2px;
+  box-sizing: border-box;
+  padding: 5vw;
+  vertical-align: center;
 }
 
 .blinkScrollBar {
@@ -115,7 +118,7 @@ section.food-section h1 span {
 .hideBlinkScrollBar {
   height: 0;
   font-size: 0;
-  top: 100vh;
+  top: 120vh;
 }
 
 .modal {
