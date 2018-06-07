@@ -62,10 +62,10 @@ section.food-section h1 {
 }
 
 section.food-section h1 span {
-  color: #FF5864;
+  color: #ff5864;
 }
 
-section.food-section img{
+section.food-section img {
   height: 50vh;
 }
 
@@ -100,7 +100,7 @@ section.how-to h1 {
 }
 
 section.how-to h1 span {
-  color: #FF5864;
+  color: #ff5864;
 }
 
 section.how-to .youtubeVideos {
@@ -109,8 +109,6 @@ section.how-to .youtubeVideos {
   justify-content: center;
   flex-wrap: wrap;
 }
-
-
 
 .videoDiv {
   width: 30%;
@@ -128,10 +126,50 @@ section.how-to .youtubeVideos {
   font-weight: 2rem;
 }
 
-.hide{
-    display: none;
+.hide {
+  display: none;
 }
 
-.brand:hover{
-    cursor:pointer;
+.brand:hover {
+  cursor: pointer;
 }
+
+.rating {
+  color: #fd297b;
+}
+
+.yelp .yelp-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.yelp-review-card {
+  width: 30%; 
+  flex-wrap: wrap;
+  text-decoration: none;
+  color: black;
+  margin: 1rem 0;
+  box-shadow: 0 0 1px rgba(128, 128, 128, 0.548);
+  border-bottom: 1px solid #fd297b;
+  cursor: pointer;
+}
+
+.yelp-review-card .image {
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.yelp-review-card h1 {
+  font-weight: lighter;
+  margin: 0 0 0.5rem 0;
+}
+
+.yelp-review-card .details {
+  padding: 1rem;
+}
+
+

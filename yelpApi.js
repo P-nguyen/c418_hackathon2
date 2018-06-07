@@ -14,7 +14,9 @@ class Yelp {
         latitude,
         longitude,
         term,
-        access_token: YELP_KEY
+        access_token: YELP_KEY,
+        sort_by: 'rating',
+        limit: 3
       }
     };
 

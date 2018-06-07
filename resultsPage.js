@@ -19,7 +19,7 @@ function initializeApp() {
   Geolocation.cityLocation("irvine").done(({ results: [first] }) => {
     const { location } = first.geometry;
     Yelp.getLocalBusinesses(location, food).done(response => {
-      YelpMap.renderMap(location, response);
+      //YelpMap.renderMap(location, response);
       renderYelpResults(response);
     });
   });
@@ -37,8 +37,46 @@ function renderYelpResults({ businesses }) {
       display_phone,
       image_url,
       location,
-      url
+      url,
+      categories
     } = business;
+
+    const $yelpReviewCard = $("<a>", {
+      attr: {
+        href: url,
+        target: "_blank",
+        class: "yelp-review-card"
+      }
+    });
+
+    const $reviewImg = $("<div>", {
+      class: "image",
+      style: `background-image: url('${image_url}')`
+    });
+
+    const $reviewTitle = $("<h1>").text(name);
+
+    const $rating = $("<div>", { class: "rating" }).rate({
+      step_size: 0.1,
+      readonly: true,
+      initial_value: rating
+    });
+
+    const $categories = $("<p>", {
+      class: "categories",
+      text: categories.reduce((accumulator, next) => {
+        return accumulator + next.title + " ";
+      }, "")
+    });
+    const $address = $("<p>", {
+      class: "address",
+      text: `${location.city}`
+    });
+
+    const $details = $("<div>", { class: "details" });
+
+    $details.append($reviewTitle, $rating, $categories, $address);
+    $yelpReviewCard.append($reviewImg, $details).appendTo(".yelp-list");
   });
 }
 

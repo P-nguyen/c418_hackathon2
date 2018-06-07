@@ -6,7 +6,7 @@ class YoutubeApi {
       dataType: "json",
       data: {
         q: `${food} recipe`,
-        maxResults: 6,
+        maxResults: 3,
         detailLevel: "verbose"
       },
       success: foodVideos
