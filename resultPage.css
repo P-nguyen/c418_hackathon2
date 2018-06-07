@@ -62,7 +62,7 @@ header .country h2.name {
 }
 
 section.food-section {
-  height: calc(100vh - 2rem);
+  min-height: calc(100vh - 2rem);
 }
 
 section.food-section h1 {
@@ -83,6 +83,7 @@ section.food-section h1 span {
 .foodImageContainer>img {
   position: relative;
   width: 38.2vw;
+  height: auto;
   left: 23.6%;
 }
 
