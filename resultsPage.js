@@ -96,12 +96,11 @@ function returnToHomepage() {
   window.location.href = "index.html";
 }
 
-//AIzaSyDCZkB-dNOWPZKRKZ8qExgMivNbyyAUcPQ
 function ajaxGoogleImageSearch(inputFoodStr) {
   var ajaxObject = {
     dataType: "json",
     data: {
-      key: "",
+      key: "AIzaSyDCZkB-dNOWPZKRKZ8qExgMivNbyyAUcPQ",
       q: `${inputFoodStr}+gourmet+meal`,
       num: 2,
       type: "image/jpeg",
@@ -118,12 +117,18 @@ function ajaxGoogleImageSearch(inputFoodStr) {
         "src",
         response.items["1"].pagemap.cse_image["0"].src
       );
-      $(".food-section").prepend(foodHeaderTag, foodImgTag);
+      $(".food-section").prepend(foodHeaderTag);
+      $(".foodImageContainer").append(foodImgTag);
     },
     error: function() {
       let headerHtml = makeheader(inputFoodStr);
       let foodHeaderTag = $("<h1>").html(headerHtml);
+      let foodImgTag = $("<img>").attr(
+        "src",
+        images/moo_cow.jpg
+      );
       $(".food-section").prepend(foodHeaderTag);
+      $(".foodImageContainer").append(foodImgTag);
     }
   };
   $.ajax(ajaxObject);
@@ -183,6 +188,7 @@ function getWikipediaDescription(inputStr) {
 
 function sendLocationToYelp(){
   let location = $("input.inputField")[0].value;
+  $('.yelp-list').empty();
   //data.results[0].geometry.location
   Geolocation.cityLocation(location).done(({ results: [first] }) => {
     const { location } = first.geometry;
