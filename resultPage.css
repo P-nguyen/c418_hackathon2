@@ -84,6 +84,8 @@ section.food-section h1 span {
   position: relative;
   width: 38.2vw;
   left: 23.6%;
+  max-height: 65vh;
+  object-fit: contain;
 }
 
 .wikiDescription {
@@ -106,13 +108,13 @@ section.food-section h1 span {
   animation-duration: 2900ms;
   animation-iteration-count: infinite;
   transition-timing-function: ease;
-  transition: 1000ms;
+  transition: 500ms;
 }
 
 @keyframes blink {
-  0% {opacity: .2;}
-  50% {opacity: 0;}
-  100% {opacity: .2}
+  0% {opacity: 0;}
+  50% {opacity: .2;}
+  100% {opacity: 0}
 }
 
 .hideBlinkScrollBar {
