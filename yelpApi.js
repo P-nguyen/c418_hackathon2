@@ -14,7 +14,9 @@ class Yelp {
         latitude,
         longitude,
         term,
-        access_token: YELP_KEY
+        access_token: YELP_KEY,
+        sort_by: 'rating',
+        limit: 3
       }
     };
 
@@ -22,21 +24,25 @@ class Yelp {
   }
 }
 
-function YelpMap(response={lat:33.633985,lng:-117.733393},businesses={name:"Learning Fuze",coordinates:{latitude:null,longitude:null}}){
+function YelpMap(response={lat:33.633985,lng:-117.733393},businesses=[{name:"Learning Fuze",coordinates:{latitude:33.633985,longitude:-117.733393}}]){
 
       let myLatLng = {lat:response.lat, lng:response.lng};
-      let businessesLocation={lat:businesses.coordinates.latitude,lng:businesses.coordinates.longitude};
+      
     
       const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
+        zoom: 14,
         center: myLatLng
       });
     
-      let marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: businesses.name
-      });
+      for (var i = 0; i < businesses.length; i++){
+        let businessesLocation={lat:businesses[i].coordinates.latitude,lng:businesses[i].coordinates.longitude};
+        let marker = new google.maps.Marker({
+          position: businessesLocation,
+          map: map,
+          title: businesses[i].name
+        });
+        marker.setMap(map);
+      }
     }
    
 

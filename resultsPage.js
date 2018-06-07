@@ -1,5 +1,5 @@
 $(document).ready(initializeApp);
-
+let food;
 function initializeApp() {
   //grab url params here
   const { search } = window.location; // gets current url
@@ -7,7 +7,7 @@ function initializeApp() {
 
   const countryName = CountryApi.getCountryNameFromCode(countryCode);
   const countryLogoUrl = CountryApi.getCountryLogoUrl(countryCode);
-  const food = CountryApi.getFoodFromCountry(countryCode);
+  food = CountryApi.getFoodFromCountry(countryCode);
   ajaxGoogleImageSearch(food); //searches google search API for food
   getWikipediaDescription(food); // gets wiki description
   YoutubeApi.youtubeServerCall(food); //gets related videos from youtube APi
@@ -15,19 +15,10 @@ function initializeApp() {
   renderCountryName(countryName); //display's country name
   renderLogoImage(countryLogoUrl); //displays country flag
 
-  //data.results[0].geometry.location
-  Geolocation.cityLocation("irvine").done(({ results: [first] }) => {
-    const { location } = first.geometry;
-    Yelp.getLocalBusinesses(location, food).done(response => {
-      // YelpMap.renderMap(location, response);
-      renderYelpResults(response);
-    });
-  });
-
   addEventHandlers();
 }
 
-function renderYelpResults({ businesses }) {
+function renderYelpResults(businesses) {
   console.log(businesses);
   businesses.forEach(business => {
     const {
@@ -37,8 +28,46 @@ function renderYelpResults({ businesses }) {
       display_phone,
       image_url,
       location,
-      url
+      url,
+      categories
     } = business;
+
+    const $yelpReviewCard = $("<a>", {
+      attr: {
+        href: url,
+        target: "_blank",
+        class: "yelp-review-card"
+      }
+    });
+
+    const $reviewImg = $("<div>", {
+      class: "image",
+      style: `background-image: url('${image_url}')`
+    });
+
+    const $reviewTitle = $("<h1>").text(name);
+
+    const $rating = $("<div>", { class: "rating" }).rate({
+      step_size: 0.1,
+      readonly: true,
+      initial_value: rating
+    });
+
+    const $categories = $("<p>", {
+      class: "categories",
+      text: categories.reduce((accumulator, next) => {
+        return accumulator + next.title + " ";
+      }, "")
+    });
+    const $address = $("<p>", {
+      class: "address",
+      text: `${location.city}`
+    });
+
+    const $details = $("<div>", { class: "details" });
+
+    $details.append($reviewTitle, $rating, $categories, $address);
+    $yelpReviewCard.append($reviewImg, $details).appendTo(".yelp-list");
   });
 }
 
@@ -67,12 +96,11 @@ function returnToHomepage() {
   window.location.href = "index.html";
 }
 
-//AIzaSyDCZkB-dNOWPZKRKZ8qExgMivNbyyAUcPQ
 function ajaxGoogleImageSearch(inputFoodStr) {
   var ajaxObject = {
     dataType: "json",
     data: {
-      key: "",
+      key: "AIzaSyDCZkB-dNOWPZKRKZ8qExgMivNbyyAUcPQ",
       q: `${inputFoodStr}+gourmet+meal`,
       num: 2,
       type: "image/jpeg",
@@ -89,12 +117,18 @@ function ajaxGoogleImageSearch(inputFoodStr) {
         "src",
         response.items["1"].pagemap.cse_image["0"].src
       );
-      $(".food-section").prepend(foodHeaderTag, foodImgTag);
+      $(".food-section").prepend(foodHeaderTag);
+      $(".foodImageContainer").append(foodImgTag);
     },
     error: function() {
       let headerHtml = makeheader(inputFoodStr);
       let foodHeaderTag = $("<h1>").html(headerHtml);
+      let foodImgTag = $("<img>").attr(
+        "src",
+        images/moo_cow.jpg
+      );
       $(".food-section").prepend(foodHeaderTag);
+      $(".foodImageContainer").append(foodImgTag);
     }
   };
   $.ajax(ajaxObject);
@@ -154,7 +188,16 @@ function getWikipediaDescription(inputStr) {
 
 function sendLocationToYelp(){
   let location = $("input.inputField")[0].value;
-  console.log(location);
+  $('.yelp-list').empty();
+  //data.results[0].geometry.location
+  Geolocation.cityLocation(location).done(({ results: [first] }) => {
+    const { location } = first.geometry;
+    Yelp.getLocalBusinesses(location, food).done(({businesses}) => {
+      
+       YelpMap(location, businesses);
+      renderYelpResults(businesses);
+    });
+  });
   return;
 }
 
