@@ -1,5 +1,5 @@
 $(document).ready(initializeApp);
-
+let food;
 function initializeApp() {
   //grab url params here
   const { search } = window.location; // gets current url
@@ -7,7 +7,7 @@ function initializeApp() {
 
   const countryName = CountryApi.getCountryNameFromCode(countryCode);
   const countryLogoUrl = CountryApi.getCountryLogoUrl(countryCode);
-  const food = CountryApi.getFoodFromCountry(countryCode);
+  food = CountryApi.getFoodFromCountry(countryCode);
   ajaxGoogleImageSearch(food); //searches google search API for food
   getWikipediaDescription(food); // gets wiki description
   YoutubeApi.youtubeServerCall(food); //gets related videos from youtube APi
@@ -15,20 +15,11 @@ function initializeApp() {
   renderCountryName(countryName); //display's country name
   renderLogoImage(countryLogoUrl); //displays country flag
 
-  //data.results[0].geometry.location
-  Geolocation.cityLocation("irvine").done(({ results: [first] }) => {
-    const { location } = first.geometry;
-    Yelp.getLocalBusinesses(location, food).done(response => {
-      //YelpMap.renderMap(location, response);
-      renderYelpResults(response);
-    });
-  });
-
   addEventHandlers();
 }
 
-function renderYelpResults({ businesses }) {
-  console.log(businesses[0]);
+function renderYelpResults(businesses) {
+  console.log(businesses);
   businesses.forEach(business => {
     const {
       name,
@@ -84,6 +75,9 @@ function addEventHandlers() {
   $(".brand").on("click", returnToHomepage);
   $(".modal").on("click", closeYoutubeModal); //closes fixed youtube modal
   document.querySelector(".flag img").addEventListener("error", addDummyFlag);
+  $(".search-icon").on("click", sendLocationToYelp );
+  $("input.inputField").on("keydown", handleInputBarEnterKey );
+  $(window).scroll(hideBlinkScrollBar);
 }
 
 function renderCountryName(name) {
@@ -185,4 +179,29 @@ function getWikipediaDescription(inputStr) {
       }
     });
   }
+}
+
+function sendLocationToYelp(){
+  let location = $("input.inputField")[0].value;
+  //data.results[0].geometry.location
+  Geolocation.cityLocation(location).done(({ results: [first] }) => {
+    const { location } = first.geometry;
+    Yelp.getLocalBusinesses(location, food).done(({businesses}) => {
+      
+       YelpMap(location, businesses);
+      renderYelpResults(businesses);
+    });
+  });
+  return;
+}
+
+function handleInputBarEnterKey(event){
+      if(event.keyCode === 13){ //enter keypressed redirect the browser to page indicated with country code.
+          sendLocationToYelp();
+      }
+      return;
+}
+
+function hideBlinkScrollBar () {
+  $('.blinkScrollBar').addClass('hideBlinkScrollBar');
 }

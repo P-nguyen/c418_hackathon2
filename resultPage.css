@@ -16,6 +16,16 @@ h2 {
   font-family: "Montserrat", sans-serif;
 }
 
+section h1 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: lighter;
+}
+
+section h1 span {
+  color: #FF5864;
+}
+
 h1.brand {
   font-weight: lighter;
   text-transform: uppercase;
@@ -59,14 +69,53 @@ section.food-section h1 {
   text-transform: uppercase;
   font-size: 2.5rem;
   font-weight: lighter;
+  margin-left: 15px;
 }
 
 section.food-section h1 span {
   color: #ff5864;
 }
 
-section.food-section img {
+.foodImageContainer {
   height: 50vh;
+  text-align: center;
+}
+
+.foodImageContainer>img {
+  height: 100%;
+}
+
+.wikiDescription {
+  width: 50%;
+  float: right;
+  margin-top: 33.2px;
+}
+
+.blinkScrollBar {
+  height: 10vh;
+  width: 100vw;
+  position: absolute;
+  top: 88vh;
+  text-align: center;
+  font-size: 8vh;
+  background-color: #fd297b;
+  animation-name: blink;
+  animation-duration: 2900ms;
+  animation-iteration-count: infinite;
+  transition-timing-function: ease;
+  transition: 1000ms;
+}
+
+@keyframes blink {
+  0% {opacity: .2;}
+  50% {opacity: 0;}
+  100% {opacity: .2}
+}
+
+.hideBlinkScrollBar {
+  height: 0;
+  font-size: 0;
+  top: 100vh;
 }
 
 .modal {
@@ -101,6 +150,7 @@ section.how-to h1 {
 
 section.how-to h1 span {
   color: #ff5864;
+  clear: both;
 }
 
 section.how-to .youtubeVideos {
@@ -114,6 +164,13 @@ section.how-to .youtubeVideos {
   width: 30%;
   padding: 1rem;
   box-sizing: border-box;
+}
+
+.videoDiv>img:hover{
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4);
+  transition: 200ms;
 }
 
 .videoDiv img {
@@ -172,4 +229,77 @@ section.how-to .youtubeVideos {
   padding: 1rem;
 }
 
+.mapContainer{width: 100vw;
+    height: 30vw;
+}
+#map {
+  height: 100%;
+  width: 100%;
+}
+section.yelp {
+  width: 100vw;
+  height: 100vh;
+}
 
+section.yelp h1{
+  text-align: center;
+}
+
+section.yelp .search-container {
+  position: relative;
+  height: 3rem;
+  width: 60%;
+  margin: auto;
+  box-shadow: 0 1px 5px rgba(128, 128, 128, 0.3);
+  display: flex;
+}
+
+section.yelp .search-container .search-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+  background-color: #FF655B;
+}
+
+section.yelp .search-container .search-icon img {
+  width: 100%;
+  filter: invert(100%);
+}
+
+section.yelp .search-container .inputField {
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  padding-left: 1%;
+  background: rgba(255, 255, 255, 0);
+  font-family: inherit;
+}
+
+section.yelp .search-container input[name="search"] {
+  position: relative;
+  border: none;
+  outline: none;
+}
+
+section.yelp .search-container .autoCompleteBackground {
+  box-sizing: border-box;
+  padding: 9px 1%;
+  position: absolute;
+  color: grey;
+  height: inherit;
+  width: 90%;
+}
+
+@media screen and (max-width: 375px) {
+  header{
+    padding: 1rem 0;
+  }
+  h1.brand{
+    font-size: 1.5rem;
+  }
+
+  header .country h2.name{
+    display:none;
+  }
+}
