@@ -5,6 +5,7 @@ body {
 body,
 h1 {
   font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
 }
 
 h1.brand {

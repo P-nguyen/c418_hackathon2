@@ -8,6 +8,8 @@ Name: Pastel Red
 Hex: #FF655B */
 body {
   margin: 0;
+ overflow-x: hidden
+
 }
 
 body,
