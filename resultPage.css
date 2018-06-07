@@ -310,4 +310,52 @@ section.yelp .search-container .autoCompleteBackground {
   header .country h2.name{
     display:none;
   }
+
+  .mapContainer {
+    display:none;
+  }
+
+  section.food-section h1 {
+    text-align:center;
+    margin-left:0;
+  }
+
+  .wikiDescription {
+    width: 100%;
+    float:none;
+    text-align:center;
+  }
+  .foodImageContainer{
+    display:static;
+  }
+
+  .foodImageContainer>img{
+    display:block;
+    margin: 0 auto;
+    left: 0;
+    width: 100vw;
+    max-width: 100vw;
+  }
+  
+  section.how-to h1{
+    text-align:center;
+  }
+
+  .videoImageTitle{
+    display:none;
+  }
+
+  .videoDiv {
+    width: 100%;
+  }
+
+  .youtubeModal {
+    margin: 0 18px;
+    width:90%;
+    left:0;
+  }
+
+  .yelp-review-card {
+    width:100%;
+  }
 }
