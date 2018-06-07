@@ -97,7 +97,7 @@ function returnToHomepage() {
 }
 
 function ajaxGoogleImageSearch(inputFoodStr) {
-  var ajaxObject = {
+  const ajaxObject = {
     dataType: "json",
     data: {
       key: "AIzaSyDCZkB-dNOWPZKRKZ8qExgMivNbyyAUcPQ",

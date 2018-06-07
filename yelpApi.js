@@ -15,7 +15,7 @@ class Yelp {
         longitude,
         term,
         access_token: YELP_KEY,
-        sort_by: 'rating',
+        sort_by: 'distance',
         limit: 3
       }
     };
@@ -30,11 +30,11 @@ function YelpMap(response={lat:33.633985,lng:-117.733393},businesses=[{name:"Lea
       
     
       const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
+        zoom: 15,
         center: myLatLng
       });
     
-      for (var i = 0; i < businesses.length; i++){
+      for (let i = 0; i < businesses.length; i++){
         let businessesLocation={lat:businesses[i].coordinates.latitude,lng:businesses[i].coordinates.longitude};
         let marker = new google.maps.Marker({
           position: businessesLocation,

@@ -135,7 +135,6 @@ section.food-section h1 span {
 }
 
 section.how-to {
-  height: 100vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -223,6 +222,7 @@ section.how-to .youtubeVideos {
 .yelp-review-card h1 {
   font-weight: lighter;
   margin: 0 0 0.5rem 0;
+  font-size: 1.6rem;
 }
 
 .yelp-review-card .details {
