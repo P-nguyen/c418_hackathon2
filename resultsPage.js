@@ -209,5 +209,5 @@ function handleInputBarEnterKey(event){
 }
 
 function hideBlinkScrollBar () {
-  $('.blinkScrollBar').addClass('hideBlinkScrollBar');
+  $('.blinkScrollBar').css('display', 'none');
 }
