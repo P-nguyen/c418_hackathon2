@@ -500,6 +500,11 @@ class CountryApi {
     "food": "Palusami"
   },
   {
+    "code": "KR",
+    "name": "Korea",
+    "food": "bibimbap"
+  },
+  {
     "code": "KW",
     "name": "Kuwait",
     "food": "Machboos"
@@ -941,6 +946,11 @@ class CountryApi {
     "code": "VE",
     "name": "Venezuela",
     "food": "PABELLON CRIOLLO"
+  },
+  {
+    "code": "VN",
+    "name": "Viet Nam",
+    "food": "Pho"
   },
   {
     "code": "YE",
