@@ -49,6 +49,8 @@ function openYoutubeModal(videoClicked) {
   });
   $(".youtubeModal").append(youtubeVideo);
 
+  $(".modal").addClass("animated fadeIn");
+  $(".modal .youtubeModal").addClass("animated zoomIn");
   $(".modal").removeClass("hide");
 }
 

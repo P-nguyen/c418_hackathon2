@@ -36,7 +36,7 @@ function renderYelpResults(businesses) {
       attr: {
         href: url,
         target: "_blank",
-        class: "yelp-review-card"
+        class: "yelp-review-card animated fadeIn"
       }
     });
 
