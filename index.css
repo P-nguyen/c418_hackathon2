@@ -90,7 +90,7 @@ header {
   width: 90%;
 }
 
-#map-container {
+/* #map-container {
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -99,6 +99,10 @@ header {
 
 #map-container #regions_div {
   height: 100%;
+} */
+
+#regions_div{
+  height:100%;
 }
 
 path {
