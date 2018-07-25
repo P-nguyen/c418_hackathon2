@@ -49,11 +49,12 @@ function autoComplete( input$Ele, countryArray){
                 $(dropDownMenu).append(countryDropDown);
             }
             $('.search-container').append(dropDownMenu);
-        } else {
-            $('datalist').remove();
-            const autoCompString = autoCompleteString( lastFoundCountries ); // sets up autocomplete grey text for div behind input
-            $(".autoCompleteBackground").text( autoCompString ); //sets text to existing dom element
-        }
+        } 
+        // else {
+        //     $('datalist').remove();
+        //     const autoCompString = autoCompleteString( lastFoundCountries ); // sets up autocomplete grey text for div behind input
+        //     $(".autoCompleteBackground").text( autoCompString ); //sets text to existing dom element
+        // }
 
     });
 
@@ -86,10 +87,10 @@ function autoComplete( input$Ele, countryArray){
         return inputStr[0].toUpperCase() + inputStr.substring(1, inputStr.length);
     }
 
-    function autoCompleteString( inputCountryObj ) {
-        const result = inputCountryObj.map( obj => obj.name);
-        return result.reduce( (fullString, country) => `${fullString} | ${country}`);
-    }
+    // function autoCompleteString( inputCountryObj ) {
+    //     const result = inputCountryObj.map( obj => obj.name);
+    //     return result.reduce( (fullString, country) => `${fullString} | ${country}`);
+    // }
 
     function sendCountryCode(){
         try{
