@@ -188,7 +188,7 @@ section.how-to .youtubeVideos {
   display: none;
 }
 
-.brand:hover {
+.brand:hover, .search-icon:hover {
   cursor: pointer;
 }
 
