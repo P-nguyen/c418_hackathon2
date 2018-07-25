@@ -27,7 +27,7 @@ function autoComplete( input$Ele, countryArray){
 
         //filter countries with similar characters to input val
         let filteredCountryArr = countryArray
-                            .filter( country => country.name.substr(0, val.length).toUpperCase() === val.toUpperCase() ? true : false );
+                            .filter( country => country.name.substr(0, val.length).toUpperCase() === val.toUpperCase() );
 
         //this is a check to see if array has anything, if nothing exist then stop the function.
         if (filteredCountryArr.length === 0){
