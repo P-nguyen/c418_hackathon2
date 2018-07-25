@@ -36,7 +36,8 @@ function autoComplete( input$Ele, countryArray){
         this.value = capitalizeStr(val); // capitalize first letter of word
 
         lastFoundCountries = filteredCountryArr.splice(0,5); // set lastFoundCountries to the last 5 found
-        if ($(window).width() <= 375) {
+        // if ($(window).width() <= 375) {
+        if (true) {
             $('datalist').remove();
             let dropDownMenu = $('<datalist>', {
                 id: 'countries'
