@@ -36,7 +36,6 @@ function autoComplete( input$Ele, countryArray){
         this.value = capitalizeStr(val); // capitalize first letter of word
 
         lastFoundCountries = filteredCountryArr.splice(0,5); // set lastFoundCountries to the last 5 found
-        // if ($(window).width() <= 375) {
         if (true) {
             $('datalist').remove();
             let dropDownMenu = $('<datalist>', {
@@ -50,35 +49,11 @@ function autoComplete( input$Ele, countryArray){
             }
             $('.search-container').append(dropDownMenu);
         } 
-        // else {
-        //     $('datalist').remove();
-        //     const autoCompString = autoCompleteString( lastFoundCountries ); // sets up autocomplete grey text for div behind input
-        //     $(".autoCompleteBackground").text( autoCompString ); //sets text to existing dom element
-        // }
-
     });
 
     // checks if enter or right arrow as been pressed
     input$Ele.on("keydown", function(event){
-        if(event.keyCode === 39){ // right arrow pressed
-            // if(lastFoundCountries<1){
-            //     return $(".autoCompleteBackground").text( "" );
-            // }
-
-            // if(lastFoundCountries[0].name === this.value){
-            //     lastFoundCountries.splice(0,1);
-            // }
-
-            // if(lastFoundCountries.length <1){
-            //     this.value = '';
-            //     $(".autoCompleteBackground").text( "" );
-            // }else{
-            //     this.value = lastFoundCountries[0].name;
-            //     $(".autoCompleteBackground").text( autoCompleteString( lastFoundCountries ));
-            // }
-            // return;
-        }
-        else if(event.keyCode === 13){ //enter keypressed redirect the browser to page indicated with country code.
+        if(event.keyCode === 13){ //enter keypressed redirect the browser to page indicated with country code.
             sendCountryCode();
         }
     });
@@ -86,11 +61,6 @@ function autoComplete( input$Ele, countryArray){
     function capitalizeStr( inputStr ){
         return inputStr[0].toUpperCase() + inputStr.substring(1, inputStr.length);
     }
-
-    // function autoCompleteString( inputCountryObj ) {
-    //     const result = inputCountryObj.map( obj => obj.name);
-    //     return result.reduce( (fullString, country) => `${fullString} | ${country}`);
-    // }
 
     function sendCountryCode(){
         try{
