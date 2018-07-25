@@ -60,23 +60,24 @@ function autoComplete( input$Ele, countryArray){
     // checks if enter or right arrow as been pressed
     input$Ele.on("keydown", function(event){
         if(event.keyCode === 39){ // right arrow pressed
-            if(lastFoundCountries<1){
-                return $(".autoCompleteBackground").text( "" );
-            }
+            // if(lastFoundCountries<1){
+            //     return $(".autoCompleteBackground").text( "" );
+            // }
 
-            if(lastFoundCountries[0].name === this.value){
-                lastFoundCountries.splice(0,1);
-            }
+            // if(lastFoundCountries[0].name === this.value){
+            //     lastFoundCountries.splice(0,1);
+            // }
 
-            if(lastFoundCountries.length <1){
-                this.value = '';
-                $(".autoCompleteBackground").text( "" );
-            }else{
-                this.value = lastFoundCountries[0].name;
-                $(".autoCompleteBackground").text( autoCompleteString( lastFoundCountries ));
-            }
-            return;
-        }else if(event.keyCode === 13){ //enter keypressed redirect the browser to page indicated with country code.
+            // if(lastFoundCountries.length <1){
+            //     this.value = '';
+            //     $(".autoCompleteBackground").text( "" );
+            // }else{
+            //     this.value = lastFoundCountries[0].name;
+            //     $(".autoCompleteBackground").text( autoCompleteString( lastFoundCountries ));
+            // }
+            // return;
+        }
+        else if(event.keyCode === 13){ //enter keypressed redirect the browser to page indicated with country code.
             sendCountryCode();
         }
     });
