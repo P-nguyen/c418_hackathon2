@@ -1,10 +1,16 @@
 <?php 
 require('yelp_key.php');
 
+extract($_POST);
+
+$query = "?latitude={$latitude}&longitude={$longitude}&term={$term}&sort_by={$sort_by}&limit={$limit}";
+// print($query);
+// exit();
+
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://api.yelp.com/v3/businesses/search?location=92688&term=food",
+    CURLOPT_URL => "https://api.yelp.com/v3/businesses/search{$query}",
     CURLOPT_HTTPHEADER => array($authorization),
     CURLOPT_RETURNTRANSFER => true,
     // CURLOPT_ENCODING => "",
