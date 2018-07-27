@@ -6,7 +6,7 @@ $curl = curl_init();
 curl_setopt_array($curl, array(
     CURLOPT_URL => "https://api.yelp.com/v3/businesses/search?location=92688&term=food",
     CURLOPT_HTTPHEADER => array($authorization),
-    // CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_RETURNTRANSFER => true,
     // CURLOPT_ENCODING => "",
     // CURLOPT_MAXREDIRS => 10,
     // CURLOPT_TIMEOUT => 30,
@@ -15,3 +15,9 @@ curl_setopt_array($curl, array(
     // CURLOPT_SSL_VERIFYPEER => false
 
 ));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+curl_close($curl);
+
+print($response);
