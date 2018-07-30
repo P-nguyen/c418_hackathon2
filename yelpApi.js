@@ -39,12 +39,6 @@ function YelpMap(response={lat:33.633985,lng:-117.733393},businesses=[{name:"Lea
             title: businesses[i].name
         });
         bounds.extend(marker.position);
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-            infowindow.setContent(locations[i][0]);
-            infowindow.open(map, marker);
-        }
-        })(marker, i));
     }
     map.fitBounds(bounds);
     let listener = google.maps.event.addListener(map, "idle", function () {
