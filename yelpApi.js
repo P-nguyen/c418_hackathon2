@@ -31,7 +31,7 @@ function YelpMap(response={lat:33.633985,lng:-117.733393},businesses=[{name:"Lea
         zoom: 15,
         center: myLatLng
       });
-    
+      
       for (let i = 0; i < businesses.length; i++){
         let businessesLocation={lat:businesses[i].coordinates.latitude,lng:businesses[i].coordinates.longitude};
         let marker = new google.maps.Marker({
