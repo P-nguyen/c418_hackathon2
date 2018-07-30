@@ -19,8 +19,7 @@ function initializeApp() {
 }
 
 function renderYelpResults(businesses) {
-  console.log(businesses);
-  businesses.forEach(business => {
+  businesses.businesses.forEach(business => {
     const {
       name,
       rating,
@@ -192,9 +191,9 @@ function sendLocationToYelp(){
   //data.results[0].geometry.location
   Geolocation.cityLocation(location).done(({ results: [first] }) => {
     const { location } = first.geometry;
-    Yelp.getLocalBusinesses(location, food).done(({businesses}) => {
-      
-       YelpMap(location, businesses);
+    Yelp.getLocalBusinesses(location, food).done((businesses) => {
+      businesses = JSON.parse(businesses);
+      YelpMap(location, businesses.businesses);
       renderYelpResults(businesses);
     });
   });
