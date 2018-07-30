@@ -23,25 +23,36 @@ class Yelp {
 }
 
 function YelpMap(response={lat:33.633985,lng:-117.733393},businesses=[{name:"Learning Fuze",coordinates:{latitude:33.633985,longitude:-117.733393}}]){
-
-      let myLatLng = {lat:response.lat, lng:response.lng};
-      
-    
-      const map = new google.maps.Map(document.getElementById('map'), {
+    let myLatLng = {lat:response.lat, lng:response.lng};
+    const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
         center: myLatLng
-      });
-      
-      for (let i = 0; i < businesses.length; i++){
+    });
+    let bounds = new google.maps.LatLngBounds();
+    let infowindow = new google.maps.InfoWindow(); 
+
+    for (let i = 0; i < businesses.length; i++){
         let businessesLocation={lat:businesses[i].coordinates.latitude,lng:businesses[i].coordinates.longitude};
         let marker = new google.maps.Marker({
-          position: businessesLocation,
-          map: map,
-          title: businesses[i].name
+            position: businessesLocation,
+            map: map,
+            title: businesses[i].name
         });
-        marker.setMap(map);
-      }
+        bounds.extend(marker.position);
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+            infowindow.setContent(locations[i][0]);
+            infowindow.open(map, marker);
+        }
+        })(marker, i));
     }
+    map.fitBounds(bounds);
+    let listener = google.maps.event.addListener(map, "idle", function () {
+        google.maps.event.removeListener(listener);
+    });
+}
+    
+
    
 
 
