@@ -39,8 +39,7 @@ if(empty($result)) {
                 foreach($response['items'] as $video){
                     $videoIds[] = $video['id']['videoId'];
                 }
-                // print_r($videoIds);
-                // echo '<br>';
+                //Add youtube video Ids to database
                 $query = "UPDATE `food` SET `video1`='{$videoIds[0]}',`video2`='{$videoIds[1]}',`video3`='{$videoIds[2]}' WHERE `id`=$foodId";
                 mysqli_query($conn,$query);
             }
@@ -51,9 +50,3 @@ if(empty($result)) {
         $output['error'] = 'No Data';
     }
 }
-
-
-//Search food names on Youtube 
-//Collect 3 video codes for food
-//Add video code to video1, video2, and video3
-//Rinse and repeat 
