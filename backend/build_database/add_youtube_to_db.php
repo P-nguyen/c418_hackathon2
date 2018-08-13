@@ -42,7 +42,7 @@ if(empty($result)) {
                 // print_r($videoIds);
                 // echo '<br>';
                 $query = "UPDATE `food` SET `video1`='{$videoIds[0]}',`video2`='{$videoIds[1]}',`video3`='{$videoIds[2]}' WHERE `id`=$foodId";
-                $result = mysqli_query($conn,$query);
+                mysqli_query($conn,$query);
             }
 
         }
