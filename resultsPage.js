@@ -26,10 +26,17 @@ function getFoodAndMedia(countryCode){
       'countryCode': countryCode,             
     },
     success: function(response){
-      console.log(response);
+      foodObj = JSON.parse(response);
+      console.log(foodObj);
+      const {countryName, name, description, image} = foodObj.data;
+      renderDescriptionSection(name, description, image);
     },
   };
   $.ajax( ajaxOptions )
+}
+
+function renderDescriptionSection(foodName, description, image){
+  console.log('render function', foodName, description, image);
 }
 
 function renderYelpResults(businesses) {
