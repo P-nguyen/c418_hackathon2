@@ -45,6 +45,7 @@ function renderDescriptionSection(foodName, description, image){
   );
   $(".food-section").prepend(foodHeaderTag);
   $(".foodImageContainer").append(foodImgTag);
+  $(".wikiDescription").text(description);
 }
 
 function renderYelpResults(businesses) {
