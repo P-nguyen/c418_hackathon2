@@ -6,8 +6,7 @@ $output = [
     'error' => []
 ];
 
-// $countryCode = $_GET['countryCode'];
-$countryCode = 'AF';
+$countryCode = $_GET['countryCode'];
 
 $query = "SELECT `name`, `food1`, `food2`, `food3`, `food4`, `food5` FROM `country` WHERE `abbreviation`='{$countryCode}'";
 $result = mysqli_query($conn,$query);
@@ -21,7 +20,7 @@ while($foodId === '0'){
     $foodId = $row[rand(1,5)];
 }
 
-$query = "SELECT `name`, `image`, `video1`, `video2`, `video3` FROM `food` WHERE `id`=$foodId";
+$query = "SELECT `name`, `image`, `description`, `video1`, `video2`, `video3` FROM `food` WHERE `id`=$foodId";
 $result = mysqli_query($conn,$query);
 
 //Return image and videos
@@ -30,6 +29,7 @@ $output['data'] = [
     'countryName' => $countryName,
     'name' => $resultAssocArr['name'],
     'image' => $resultAssocArr['image'],
+    'description' => $resultAssocArr['description'],
     'videoIds' => [
         $resultAssocArr['video1'],
         $resultAssocArr['video2'],

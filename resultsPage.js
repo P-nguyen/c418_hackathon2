@@ -18,6 +18,20 @@ function initializeApp() {
   addEventHandlers();
 }
 
+function getFoodAndMedia(countryCode){
+  var ajaxOptions = {
+    url: 'api/result_page_endpoint.php',
+    method: 'GET',
+    data:{
+      'countryCode': countryCode,             
+    },
+    success: function(response){
+      console.log(response);
+    },
+  };
+  $.ajax( ajaxOptions )
+}
+
 function renderYelpResults(businesses) {
   businesses.businesses.forEach(business => {
     const {
