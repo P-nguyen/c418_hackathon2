@@ -10,40 +10,38 @@ if(empty($result)) {
     if(mysqli_num_rows($result) > 0) {
         while($row = mysqli_fetch_assoc($result)) {
             $foodId = $row['id'];
-            if($foodId>99){
-                $foodName = urlencode($row['name']);
 
-                $curl = curl_init();
+            $foodName = urlencode($row['name']);
 
-                curl_setopt_array($curl, array(
-                    //Key Peter:AIzaSyDCZkB-dNOWPZKRKZ8qExgMivNbyyAUcPQ
-                    //Key:AIzaSyAopFQ2g0pFQIQm0jSa9buFQYbZxIMqZIo
-                CURLOPT_URL => "https://www.googleapis.com/customsearch/v1?q=$foodName&num=1&start=1&imgSize=medium&searchType=image&key=AIzaSyDCZkB-dNOWPZKRKZ8qExgMivNbyyAUcPQ&cx=010634853593082562284:zqld8lmpm7s",
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => "",
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 30,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => "GET",
-                ));
+            $curl = curl_init();
 
-                $response = curl_exec($curl);
-                $err = curl_error($curl);
+            curl_setopt_array($curl, array(
 
-                curl_close($curl);
+            CURLOPT_URL => "https://www.googleapis.com/customsearch/v1?q=$foodName&num=1&start=1&imgSize=medium&searchType=image&key=<GOOGLE KEY>&cx=010634853593082562284:zqld8lmpm7s",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            ));
 
-                if ($err) {
-                    echo "cURL Error #:" . $err;
-                } else {
-                    print_r($response);
-                    echo '<br>';
-                    $response = json_decode($response, true);
-                    $imgUrl = $response['items'][0]['link'];
-                    print($imgUrl);
-                    echo '<br>';
-                    $query = "UPDATE `food` SET `image`='{$imgUrl}' WHERE `id`=$foodId";
-                    mysqli_query($conn,$query);
-                }
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+
+            curl_close($curl);
+
+            if ($err) {
+                echo "cURL Error #:" . $err;
+            } else {
+                print_r($response);
+                echo '<br>';
+                $response = json_decode($response, true);
+                $imgUrl = $response['items'][0]['link'];
+                print($imgUrl);
+                echo '<br>';
+                $query = "UPDATE `food` SET `image`='{$imgUrl}' WHERE `id`=$foodId";
+                mysqli_query($conn,$query);
             }
         }
         $output['success'] = true;
