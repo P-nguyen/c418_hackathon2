@@ -37,6 +37,14 @@ function getFoodAndMedia(countryCode){
 
 function renderDescriptionSection(foodName, description, image){
   console.log('render function', foodName, description, image);
+  let headerHtml = makeheader(foodName);
+  let foodHeaderTag = $("<h1>").html(headerHtml);
+  let foodImgTag = $("<img>").attr(
+    "src",
+    image
+  );
+  $(".food-section").prepend(foodHeaderTag);
+  $(".foodImageContainer").append(foodImgTag);
 }
 
 function renderYelpResults(businesses) {
